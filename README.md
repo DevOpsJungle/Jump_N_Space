@@ -1,2 +1,2 @@
-# DevOps_Platformer
- A project of five IT-Students
+# Jump 'N' Space
+ A project of five IT-Students.
