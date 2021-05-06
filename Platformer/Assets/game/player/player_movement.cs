@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class player_movement : MonoBehaviour
 {
-    public Rigidbody2D rigidbody;
-    public Transform transform;
+    public new Rigidbody2D rigidbody;
+    public new Transform transform;
     public float force;
     // Start is called before the first frame update
     void Start()
