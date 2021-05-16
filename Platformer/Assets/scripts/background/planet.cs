@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class planet : screenspace
+public class Planet : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,6 @@ public class planet : screenspace
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(screen.x+5,2 , 0);
+        //transform.position = new Vector3(ScreenSpace.screen.x+5,2 , 0);
     }
 }

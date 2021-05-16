@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class screenspace : MonoBehaviour
-{
-    private Vector3 screenref;
-    private Vector3 screenupd;
-    
+public class ScreenSpace : MonoBehaviour
+{/*
+    public Vector3 screen_ref;
+    public Vector3 screen_upd;
+
     public static Vector3 screen;
-
-    public static Vector3 edgeleft;
-    public static Vector3 edgeright;
+    public Vector3 ins_screen;
     
 
+    public static Vector3 edge_left;
+    public Vector3 ins_edge_left;
+    public static Vector3 edge_right;
+    public Vector3 ins_edge_right;
+
+    public Camera cam;
+    
     public static Vector3 ScreenReference()
     {
         Vector3 vec = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -28,19 +31,23 @@ public class screenspace : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        screenref = ScreenReference();
+        cam = Camera.main;
+        screen_ref = ScreenReference();
     }
 
     // Update is called once per frame
     void Update()
     {
-        screenupd = ScreenUpdate();
+        screen_upd = ScreenUpdate();
 
-        screen.x = (screenupd.x - screenref.x);
+        screen.x = (screen_upd.x - screen_ref.x);
         
-        edgeleft.x = (screen.x + screenref.x);
-        edgeright.x = (screen.x - screenref.x);
-        
-        
-    }
+        edge_left.x = (screen.x + screen_ref.x);
+        edge_right.x = (screen.x - screen_ref.x);
+
+        ins_edge_left = edge_left;
+        ins_edge_right = edge_right;
+        ins_screen = screen;
+
+    }*/
 }
