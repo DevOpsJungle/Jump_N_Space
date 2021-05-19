@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -3
-  border: 3
+  edgeext: 5
 --- !u!1 &848023362
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  border: 20
+  edgeext: 10
 --- !u!95 &2098434961
 Animator:
   serializedVersion: 3
@@ -1173,10 +1173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  edgeleft: 0
-  edgeright: 0
-  edgetop: 0
-  edgebottom: 0
   edge: {fileID: 2106967838}
   cam: {fileID: 15715336}
   pos: {x: 0, y: 0, z: 0}

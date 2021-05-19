@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Asteroid : MonoBehaviour
 {
     public float speed;
-    public float border;
+    public float edgeext;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,24 +19,21 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var trans = transform;
-        trans.position = trans.position + new Vector3(speed*Time.deltaTime,0 , 0);
+        transform.position = transform.position + new Vector3(speed*Time.deltaTime,0 , 0);
+
+        if (transform.position.x < ScreenBoundary.edgeleft - edgeext)
+        {
+            transform.position = new Vector3(ScreenBoundary.edgeright, transform.position.y, transform.position.z);
+        }
+        
+        if (transform.position.x > ScreenBoundary.edgeright + edgeext)
+        {
+            transform.position = new Vector3(ScreenBoundary.edgeleft, transform.position.y, transform.position.z);
+        }
         
         //Output the current screen window width in the console
-        //Debug.Log("Screen Width : " + screenref.x);
-        //Debug.Log("Screen Width : " + screenupd.x);
-        //Debug.Log("Screen Width : " + screen.x);
-/*
-        if (trans.position.x < (ScreenSpace.edge_left.x - border))
-        {
-            trans.position = new Vector3((ScreenSpace.edge_right.x + border), transform.position.y, trans.position.z);
-        }
         
-        if (trans.position.x > (ScreenSpace.edge_right.x + border))
-        {
-            trans.position = new Vector3((ScreenSpace.edge_left.x - border), transform.position.y, trans.position.z);
-        }
-        */
-
+        //Debug.Log("Edge Left : " + ScreenBoundary.edgeleft);
+        //Debug.Log("Edge Right : " + ScreenBoundary.edgeright);
     }
 }
