@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class player_movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public new Rigidbody2D rigidbody;
     public new Transform transform;
     public float force;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class player_movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
         {
