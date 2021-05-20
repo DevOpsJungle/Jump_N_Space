@@ -23,13 +23,13 @@ public class ScreenBoundary : MonoBehaviour
     
     void FindBoundary()
     {
-        width = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);
+        width = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
         height = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
     }
 
     void SetEdges(int inx, int iny)       // posx und posy, entweder 0|1, ob in diese Richtung Transformiert wird
     {
-        pos.x = inx * pos.x;
+        pos.x = inx * pos.x;              // setzen der Viewport "Kanten"
         pos.y = iny * pos.y;
             
         edgeleft = (-width/ 2) + pos.x;
@@ -66,7 +66,7 @@ public class ScreenBoundary : MonoBehaviour
         
         FindBoundary();
         
-        SetEdges(1,0);
+        SetEdges(1,1);
 
         SetBoundary();
         
