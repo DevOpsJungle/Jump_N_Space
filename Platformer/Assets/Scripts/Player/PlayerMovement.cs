@@ -1,41 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public new Rigidbody2D rigidbody;
-    public new Transform transform;
-    public float force;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    public CharacterController2D controller;
+
+    public float runSpeed = 40f;
+
+    float horizontalMove = 0f;
+    bool jump = false;
+
+
+    void Update()
     {
-        //rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+        }
+
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            rigidbody.AddForce(transform.up * force);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            rigidbody.AddForce(transform.up * -force);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            rigidbody.AddForce(transform.right * -force);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            rigidbody.AddForce(transform.right * force);
-        }
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        jump = false;
     }
 }
