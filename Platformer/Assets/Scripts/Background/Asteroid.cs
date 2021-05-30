@@ -19,17 +19,22 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(speed*Time.deltaTime,0 , 0);
+        var position = transform.position;
+        position = position + new Vector3(speed*Time.deltaTime,0 , 0);
 
-        if (transform.position.x < ScreenBoundary.edgeleft - edgeext)
+        if (position.x < ScreenBoundary.edgeleft - edgeext)
         {
-            transform.position = new Vector3(ScreenBoundary.edgeright, transform.position.y, transform.position.z);
+            
+            position = new Vector3(ScreenBoundary.edgeright, position.y, position.z);
+            
         }
         
-        if (transform.position.x > ScreenBoundary.edgeright + edgeext)
+        if (position.x > ScreenBoundary.edgeright + edgeext)
         {
-            transform.position = new Vector3(ScreenBoundary.edgeleft, transform.position.y, transform.position.z);
+            position = new Vector3(ScreenBoundary.edgeleft, position.y, position.z);
         }
+        
+        transform.position = position;
         
         //Output the current screen window width in the console
         
