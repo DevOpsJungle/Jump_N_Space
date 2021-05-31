@@ -7,31 +7,49 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ScreenBoundary : MonoBehaviour
 {
-    public float width;
-    public float height;
-
+    [SerializeField] private float width;       //show private attribute in inspector
+    [SerializeField] private float height;
+    
     public static float edgeleft;
     public static float edgeright;
     public static float edgetop;
     public static float edgebottom;
     
     public EdgeCollider2D edge;
-    public Camera cam;
-
-    
-    public Vector3 pos;
-    
-    void FindBoundary()
+    public Camera default_Camera;
+    [SerializeField] private Vector3 pos;
+   
+    void Awake()
     {
-        width = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
-        height = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
+        default_Camera = Camera.main.GetComponent<CameraView>().camera;
+        edge = GetComponent<EdgeCollider2D>();
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        pos = CameraView.player_pos;
     }
 
-    void SetEdges(int inx, int iny)       // posx und posy, entweder 0|1, ob in diese Richtung Transformiert wird
+    // Update is called once per frame
+    void Update()
     {
-        pos.x = inx * pos.x;              // setzen der Viewport "Kanten"
-        pos.y = iny * pos.y;
-            
+        pos = CameraView.player_pos;
+        
+        FindBoundary();
+        SetEdges();
+        SetBoundary();
+    }
+    
+    
+    private void FindBoundary()
+    {
+        width = 1 / (default_Camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
+        height = 1 / (default_Camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
+    }
+
+    private void SetEdges()                         //set edges with camera pos --> Camera Viewport defines edges
+    {
         edgeleft = (-width/ 2) + pos.x;
         edgeright = (width/ 2) + pos.x;
         
@@ -39,7 +57,7 @@ public class ScreenBoundary : MonoBehaviour
         edgebottom = (-height / 2) + pos.y;
     }
     
-    void SetBoundary()
+    private void SetBoundary()                      //with edgepoints boundary can be set
     {
         Vector2 point_1 = new Vector2(edgeright, edgetop);
         Vector2 point_2 = new Vector2(edgeright, edgebottom);
@@ -48,28 +66,6 @@ public class ScreenBoundary : MonoBehaviour
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_3,point_4,point_1};
 
         edge.points = pointArray;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = Camera.main;
-        edge = GetComponent<EdgeCollider2D>();
-        pos = CameraView.player_worldspace_pos;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        pos = CameraView.player_worldspace_pos;
-        
-        FindBoundary();
-        
-        SetEdges(1,1);
-
-        SetBoundary();
-        
     }
 }
 
