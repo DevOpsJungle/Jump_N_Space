@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -222,6 +222,36 @@ MonoBehaviour:
   player: {fileID: 856285690}
   speed: 2
   cam: {fileID: 15715336}
+--- !u!1 &134082798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134082799}
+  m_Layer: 9
+  m_Name: groundcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134082799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134082798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 856285690}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &236991255
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,8 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5706b8f417f903d43919da321da015af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -3
-  edgeext: 5
+  speed: -15
+  edgeext: 20
 --- !u!1 &848023362
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,9 +667,10 @@ GameObject:
   - component: {fileID: 856285689}
   - component: {fileID: 856285688}
   - component: {fileID: 856285687}
+  - component: {fileID: 856285692}
   - component: {fileID: 856285691}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -657,10 +688,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -675,13 +706,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 856285686}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: be61900062a408445ad0c9924750af20, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.49
 --- !u!212 &856285689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -743,7 +774,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 134082799}
   m_Father: {fileID: 571388702}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -756,12 +788,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 856285686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962d8341ad4e9ac4c8d74da1cb8188bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 31f383286a8433f45b25b480cb0832b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 856285687}
-  transform: {fileID: 856285690}
-  force: 20
+  controller: {fileID: 856285692}
+  runspeed: 40
+--- !u!114 &856285692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856285686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da093af8049b65548b37ed4200b732a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpforce: 700
+  movementsmoothing: 0.05
+  aircontrol: 1
+  whatisground:
+    serializedVersion: 2
+    m_Bits: 439
+  groundcheck: {fileID: 134082799}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &879982901
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,8 +1047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5706b8f417f903d43919da321da015af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  edgeext: 10
+  speed: -10
+  edgeext: 20
 --- !u!95 &2098434961
 Animator:
   serializedVersion: 3
