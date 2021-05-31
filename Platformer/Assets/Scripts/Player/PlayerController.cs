@@ -19,7 +19,11 @@ public class PlayerController : MonoBehaviour
     float horizontalmove = 0f;
     bool jump = false;
 
-
+    private void Awake()
+    {
+        controller = GetComponent<EntityMovement>();
+    }
+    
     void Update()
     {
         horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;

@@ -11,7 +11,7 @@ using UnityEngine.Events;
 
 public class EntityMovement : MonoBehaviour
 {
-	[SerializeField] private float jumpforce = 400f; // SerializeField show variable up in Inspector							
+	[SerializeField] private float jumpforce = 400f; // SerializeField show variable in Inspector							
 	[Range(0, .3f)] [SerializeField] private float movementsmoothing = .05f;	
 	[SerializeField] private bool aircontrol = false;							
 	[SerializeField] private LayerMask whatisground;							
@@ -31,7 +31,9 @@ public class EntityMovement : MonoBehaviour
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 	
-	private void Awake() {
+	private void Awake()
+	{
+		groundcheck = GameObject.Find("Groundcheck").GetComponent<Transform>();
 		v_rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
