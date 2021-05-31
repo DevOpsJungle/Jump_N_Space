@@ -11,7 +11,7 @@ using UnityEngine.Events;
 
 public class EntityMovement : MonoBehaviour
 {
-	[SerializeField] private float jumpforce = 400f;							
+	[SerializeField] private float jumpforce = 400f; // SerializeField show variable up in Inspector							
 	[Range(0, .3f)] [SerializeField] private float movementsmoothing = .05f;	
 	[SerializeField] private bool aircontrol = false;							
 	[SerializeField] private LayerMask whatisground;							
@@ -23,7 +23,7 @@ public class EntityMovement : MonoBehaviour
 	private bool facingright = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 
-	[Header("Events")]
+	[Header("Events")] // Structured view in the Inspector
 	[Space]
 
 	public UnityEvent OnLandEvent;
@@ -58,7 +58,7 @@ public class EntityMovement : MonoBehaviour
 		if (grounded || aircontrol) {
 
 			Vector3 targetVelocity = new Vector2(move * 10f, v_rigidbody2D.velocity.y);
-			// Smooth an apply the velocity to the entity
+			// Smooth and apply the velocity to the entity
 			v_rigidbody2D.velocity = Vector3.SmoothDamp(v_rigidbody2D.velocity, targetVelocity, ref velocity, movementsmoothing);
 			
 			if (move > 0 && !facingright) {
