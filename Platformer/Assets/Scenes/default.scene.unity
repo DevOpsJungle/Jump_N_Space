@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f93b30655cbd3948951a6d2fb92a91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 764672894}
-  cam: {fileID: 15715336}
+  transform: {fileID: 764672894}
+  camera: {fileID: 15715336}
 --- !u!1 &236991255
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,8 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962d8341ad4e9ac4c8d74da1cb8188bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 764672896}
-  transform: {fileID: 764672894}
+  rigidbody: {fileID: 0}
+  transform: {fileID: 0}
   force: 20
 --- !u!50 &764672896
 Rigidbody2D:
@@ -1172,6 +1172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  pos: {x: 0, y: 0, z: 0}
   edge: {fileID: 2106967838}
-  c: {fileID: 0}
+  default_Camera: {fileID: 0}
+  pos: {x: 0, y: 0, z: 0}
