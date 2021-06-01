@@ -1,3 +1,10 @@
+/*
+ * Script: Screen Boundary
+ * Author: Felix Schneider
+ * Last Change: 01.06.21
+ * ...I am a description...
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
