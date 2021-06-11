@@ -11,15 +11,17 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
+    [SerializeField] private Vector3 pos;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        pos = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //transform.position = new Vector3(ScreenSpace.screen.x+5,2 , 0);
+        transform.position = new Vector3(ScreenViewport.screenpos.x,0,0) + pos;
     }
 }

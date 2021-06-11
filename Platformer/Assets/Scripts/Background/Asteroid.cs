@@ -14,9 +14,8 @@ using UnityEngine.UIElements;
 public class Asteroid : MonoBehaviour
 {
     public float speed;
-    public float edgeext;
+    public float border;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,24 +23,24 @@ public class Asteroid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        var position = transform.position;
-        position = position + new Vector3(speed*Time.deltaTime,0 , 0);
-
-        if (position.x < ScreenBoundary.edgeleft - edgeext)
+        var trans_pos = transform.position;
+        trans_pos = trans_pos + new Vector3(speed*Time.deltaTime,0 , 0);
+        
+        //left side
+        if (trans_pos.x < ScreenViewport.edgeleft - border)
         {
-            
-            position = new Vector3(ScreenBoundary.edgeright, position.y, position.z);
-            
+            trans_pos = new Vector3(ScreenViewport.edgeright + border, trans_pos.y, trans_pos.z);
         }
         
-        if (position.x > ScreenBoundary.edgeright + edgeext)
+        //right side
+        if (trans_pos.x > ScreenViewport.edgeright + border)
         {
-            position = new Vector3(ScreenBoundary.edgeleft, position.y, position.z);
+            trans_pos = new Vector3(ScreenViewport.edgeleft - border, trans_pos.y, trans_pos.z);
         }
         
-        transform.position = position;
+        transform.position = trans_pos;
         
         //Output the current screen window width in the console
         

@@ -1,7 +1,7 @@
 /*
  * Script: Camera View
  * Author: Felix Schneider
- * Last Change: 01.06.21
+ * Last Change: 10.06.21
  * ...I am a description...
  */
 
@@ -13,31 +13,28 @@ using UnityEngine;
 public class CameraView : MonoBehaviour
 {
     public new Transform transform;    //player Object
-    public new Camera camera;
+    public static Camera camera_player;
 
-    public static Vector3 player_pos;   //for other Classes
+    public static Vector3 player_trans_pos;   //for other Classes
 
-    void Awake()
+
+    private void Awake()
     {
-        
+        camera_player = gameObject.GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is called once per physics update 50 Hz
+    void FixedUpdate()
     {
-        var cam_Tansform = camera.transform;    //camera 
-        player_pos = transform.position;   //player
+        var camera_trans = camera_player.transform;    //camera 
+        player_trans_pos = transform.position;   //player
         
-        
-        cam_Tansform.position = new Vector3(player_pos.x, player_pos.y, cam_Tansform.position.z);
-        
+        camera_trans.position = new Vector3(player_trans_pos.x, player_trans_pos.y, camera_trans.position.z);
     }
-    
-    
 }

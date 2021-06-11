@@ -1,19 +1,23 @@
 /*
- * Script: Screen Boundary
+ * Script: Screen
  * Author: Felix Schneider
- * Last Change: 01.06.21
+ * Last Change: 10.06.21
  * ...I am a description...
  */
 
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-public class ScreenBoundary : MonoBehaviour
+public class ScreenViewport : MonoBehaviour
 {
+    
+    public static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
+    
     [SerializeField] private float width;       //show private attribute in inspector
     [SerializeField] private float height;
     
@@ -23,36 +27,42 @@ public class ScreenBoundary : MonoBehaviour
     public static float edgebottom;
     
     public EdgeCollider2D edge;
-    public Camera default_Camera;
-    [SerializeField] private Vector3 pos;
+    public Camera camera_viewport;
+    [SerializeField] private Vector3 pos;       //Player Position
    
     void Awake()
     {
-        default_Camera = Camera.main.GetComponent<CameraView>().camera;
         edge = GetComponent<EdgeCollider2D>();
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        pos = CameraView.player_pos;
+        camera_viewport = CameraView.camera_player;
+        pos = CameraView.player_trans_pos;
+        FindScreenpos();
     }
 
     // Update is called once per frame
     void Update()
     {
-        pos = CameraView.player_pos;
-        
+        pos = CameraView.player_trans_pos;
+        FindScreenpos();
+
         FindBoundary();
         SetEdges();
         SetBoundary();
     }
-    
+
+    private void FindScreenpos()
+    {
+        screenpos = camera_viewport.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - camera_viewport.transform.position.z));
+    }
     
     private void FindBoundary()
     {
-        width = 1 / (default_Camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
-        height = 1 / (default_Camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
+        width = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
+        height = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
     }
 
     private void SetEdges()                         //set edges with camera pos --> Camera Viewport defines edges
