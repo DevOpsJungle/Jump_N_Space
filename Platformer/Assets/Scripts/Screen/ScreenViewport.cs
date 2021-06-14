@@ -1,5 +1,5 @@
 /*
- * Script: Screen
+ * Script: ScreenViewport
  * Author: Felix Schneider
  * Last Change: 10.06.21
  * ...I am a description...
@@ -18,8 +18,8 @@ public class ScreenViewport : MonoBehaviour
     
     public static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
     
-    [SerializeField] private float width;       //show private attribute in inspector
-    [SerializeField] private float height;
+    public static float width;       //show private attribute in inspector
+    public static float height;
     
     public static float edgeleft;
     public static float edgeright;
@@ -33,23 +33,25 @@ public class ScreenViewport : MonoBehaviour
     void Awake()
     {
         edge = GetComponent<EdgeCollider2D>();
+        
+        FindDimensions();
     }
     
     // Start is called before the first frame update
     void Start()
     {
         camera_viewport = CameraView.camera_player;
-        pos = CameraView.player_trans_pos;
+        pos = PlayerController.player_pos;
         FindScreenpos();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        pos = CameraView.player_trans_pos;
+        pos = PlayerController.player_pos;
         FindScreenpos();
 
-        FindBoundary();
+        FindDimensions();
         SetEdges();
         SetBoundary();
     }
@@ -59,7 +61,7 @@ public class ScreenViewport : MonoBehaviour
         screenpos = camera_viewport.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - camera_viewport.transform.position.z));
     }
     
-    private void FindBoundary()
+    public void FindDimensions()
     {
         width = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
         height = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);

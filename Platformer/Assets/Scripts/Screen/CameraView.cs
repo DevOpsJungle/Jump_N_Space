@@ -12,29 +12,29 @@ using UnityEngine;
 
 public class CameraView : MonoBehaviour
 {
-    public new Transform transform;    //player Object
     public static Camera camera_player;
-
-    public static Vector3 player_trans_pos;   //for other Classes
-
 
     private void Awake()
     {
-        camera_player = gameObject.GetComponent<Camera>();
+        camera_player = GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetCamera();
     }
 
-    // FixedUpdate is called once per physics update 50 Hz
-    void FixedUpdate()
+    // LateUpdate is called after Update
+    void LateUpdate()
     {
-        var camera_trans = camera_player.transform;    //camera 
-        player_trans_pos = transform.position;   //player
-        
-        camera_trans.position = new Vector3(player_trans_pos.x, player_trans_pos.y, camera_trans.position.z);
+        SetCamera();
+    }
+
+    private void SetCamera()
+    {
+        var player_pos = PlayerController.player_pos;
+        var camera_trans = camera_player.transform;
+        camera_trans.position = new Vector3(player_pos.x, player_pos.y, camera_trans.position.z);
     }
 }

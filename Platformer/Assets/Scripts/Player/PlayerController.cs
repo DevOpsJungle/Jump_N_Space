@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public EntityMovement controller;
+    public static Vector3 player_pos;
 
     public float runspeed = 40f;
 
@@ -22,17 +23,19 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<EntityMovement>();
+        player_pos = GetComponent<Transform>().position;
     }
     
     void Update()
     {
+        player_pos = GetComponent<Transform>().position;
+        
         horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
-
     }
 
     void FixedUpdate()

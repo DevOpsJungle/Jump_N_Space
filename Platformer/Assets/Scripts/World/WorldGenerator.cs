@@ -11,28 +11,31 @@ public class WorldGenerator : MonoBehaviour
     [Range(0, 10f)] [SerializeField] private int startchunks;
     [Range(0, 500f)] [SerializeField] private int chunkvisibility;
     
-    private GameObject player; //Krücke
-
+    private Vector3 pos;
     private Vector3 lastendposition;
     
     private void Awake()
     {
-        player = GameObject.Find("PlayerNameHere"); //Krücke
-        
-        Instantiate(chunk_start, new Vector3(-17, -10, 0), Quaternion.identity);
-        
-        lastendposition = chunk_start.Find("EndPosition").position;
+        //lastendposition = chunk_start.Find("EndPosition").position;
+        lastendposition = chunk_start.Find("EndPosition").GetComponent<Transform>().position;
+    }
 
+    private void Start()
+    {
+        pos = PlayerController.player_pos;
+        Instantiate(chunk_start, new Vector3(0, 0, 0), Quaternion.identity, transform.parent);
+        
         for (int i = 0; i < startchunks - 1; i++)
         {
             PlaceChunk();
         }
-        
     }
 
     private void Update()
     {
-        if (Vector3.Distance( player.transform.position, lastendposition) < chunkvisibility) //nicht funktionabel
+        pos = PlayerController.player_pos;
+        
+        if (Vector3.Distance( pos, lastendposition) < ScreenViewport.width/2 + chunkvisibility)
         {
             PlaceChunk();
         }
@@ -47,7 +50,7 @@ public class WorldGenerator : MonoBehaviour
 
     private Transform PlaceChunk(Transform chunkpart, Vector3 spawnposition)
     {
-        Transform chunktransform = Instantiate(chunkpart, spawnposition, Quaternion.identity);
+        Transform chunktransform = Instantiate(chunkpart, spawnposition, Quaternion.identity, transform.parent);
         return chunktransform;
     }
 }
