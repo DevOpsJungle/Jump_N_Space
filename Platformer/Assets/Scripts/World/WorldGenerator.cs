@@ -1,3 +1,10 @@
+/*
+ * Script: World Generator
+ * Author: Felix Schneider, Vincent Becker
+ * Last Change: 14.06.21
+ * This script creates the world at random using predefined chunks
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
