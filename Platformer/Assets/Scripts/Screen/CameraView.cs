@@ -1,7 +1,7 @@
 /*
  * Script: Camera View
  * Author: Felix Schneider
- * Last Change: 01.06.21
+ * Last Change: 10.06.21
  * ...I am a description...
  */
 
@@ -12,32 +12,34 @@ using UnityEngine;
 
 public class CameraView : MonoBehaviour
 {
-    public new Transform transform;    //player Object
-    public new Camera camera;
+    private new static Camera camera;
 
-    public static Vector3 player_pos;   //for other Classes
-
-    void Awake()
+    private void Awake()
     {
-        
+        camera = GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        SetCamera();
     }
 
-    // Update is called once per frame
-    void Update()
+    // LateUpdate is called after Update
+    void LateUpdate()
     {
-        var cam_Tansform = camera.transform;    //camera 
-        player_pos = transform.position;   //player
-        
-        
-        cam_Tansform.position = new Vector3(player_pos.x, player_pos.y, cam_Tansform.position.z);
-        
+        SetCamera();
     }
-    
-    
+
+    private void SetCamera()
+    {
+        var player_pos = PlayerController.GetPlayerPos();
+        var camera_pos = camera.transform;
+        camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);
+    }
+
+    public static Camera GetCamera()
+    {
+        return camera;
+    }
 }

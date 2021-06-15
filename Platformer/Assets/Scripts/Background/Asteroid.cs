@@ -9,43 +9,41 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Asteroid : MonoBehaviour
 {
-    public float speed;
-    public float edgeext;
-    
+    [SerializeField] private List <Transform> asteroid_list;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 pos;
+    private Vector3 screen_pos;
+    
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        var position = transform.position;
-        position = position + new Vector3(speed*Time.deltaTime,0 , 0);
+        pos = PlayerController.GetPlayerPos();
+        PlaceAsteroid();
+    }
 
-        if (position.x < ScreenBoundary.edgeleft - edgeext)
-        {
-            
-            position = new Vector3(ScreenBoundary.edgeright, position.y, position.z);
-            
-        }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         
-        if (position.x > ScreenBoundary.edgeright + edgeext)
-        {
-            position = new Vector3(ScreenBoundary.edgeleft, position.y, position.z);
-        }
+    }
+
+    private void PlaceAsteroid()
+    {
+        Transform chosen_asteroid = asteroid_list[Random.Range(0, asteroid_list.Count)];
+        Instantiate(chosen_asteroid, new Vector3(0, 0, 0), Quaternion.identity, transform.parent);
+    }
+
+    private void FlyAsteroid()
+    {
         
-        transform.position = position;
-        
-        //Output the current screen window width in the console
-        
-        //Debug.Log("Edge Left : " + ScreenBoundary.edgeleft);
-        //Debug.Log("Edge Right : " + ScreenBoundary.edgeright);
     }
 }
