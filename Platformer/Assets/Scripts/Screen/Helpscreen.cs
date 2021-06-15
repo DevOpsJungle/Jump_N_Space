@@ -9,35 +9,41 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class Helpscreen : MonoBehaviour
 {
-
-    private Transform transform;
-    public Camera helpcam;
-    private static Vector3 pos;
+    private new Transform transform;
+    [SerializeField] private Camera cam;
+    public static Vector3 screenpos;
+    
     private void Awake()
     {
         transform = GetComponent<Transform>();
-        //helpcam = CameraView.GetCamera();
+        cam = CameraView.GetCamera();
+        
+        
+        
+        SetHelpscreenPos();
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        SetHelpscreenPos();
+        
     }
 
     // LateUpdate is called after Update
-    void FixedUpdate()
+    void Update()
     {
         SetHelpscreenPos();
-        Debug.Log(pos);
-        transform.position = pos;
+        Debug.Log(screenpos);
+        transform.position = screenpos;
     }
 
     private void SetHelpscreenPos()
     {
-        pos = helpcam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, -helpcam.transform.position.z));
+        screenpos = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, -cam.transform.position.z));
     }
 }

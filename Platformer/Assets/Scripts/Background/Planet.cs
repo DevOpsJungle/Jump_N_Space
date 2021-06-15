@@ -25,7 +25,7 @@ public class Planet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         SetTransformDirectiom(x,y);
     }
