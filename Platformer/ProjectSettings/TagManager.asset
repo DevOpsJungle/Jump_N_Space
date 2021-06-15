@@ -17,7 +17,7 @@ TagManager:
   - Background
   - World
   - Player
-  - 
+  - Helpscreen
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 696169411
+    locked: 0
+  - name: Helpscreen
+    uniqueID: 1352420961
     locked: 0
