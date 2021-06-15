@@ -1,7 +1,7 @@
 /*
  * Script: SettingsMenu
  * Author: Philip Noack
- * Last Change: 12.06.21
+ * Last Change: 15.06.21
  * Source: https://answers.unity.com/questions/1463609/screenresolutions-returning-duplicates.html
  * Volume and Resolution control in OptionsMenu
  */
@@ -18,6 +18,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider slider;
     public Dropdown resolutionsdropdown;
     private Resolution[] resolutions;
+    public Toggle fullscreenToggle;
 
     
     void Start()
@@ -47,7 +48,10 @@ public class SettingsMenu : MonoBehaviour
         resolutionsdropdown.AddOptions(options);
         resolutionsdropdown.value = currentResolutionIndex;
         resolutionsdropdown.RefreshShownValue();
+        
+        fullscreenToggle.isOn = Screen.fullScreen;
     }
+    
     
     public void SetVolume (float sliderValue)
     {
@@ -59,5 +63,10 @@ public class SettingsMenu : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen); /*set chosen resolution and activate fullscreen*/
+    }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
     }
 } 
