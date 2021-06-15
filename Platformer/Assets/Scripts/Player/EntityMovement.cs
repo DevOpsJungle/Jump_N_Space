@@ -2,7 +2,7 @@
  * Script: Entity Movement
  * Author: Vincent Becker
  * Source: https://github.com/Brackeys/2D-Character-Controller
- * Last Change: 30.05.21
+ * Last Change: 01.06.21
  * ...I am a description...
  */
 
@@ -31,7 +31,7 @@ public class EntityMovement : MonoBehaviour
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 	
-	private void Awake()
+	private void Awake() //Awake is called when the script is being loaded
 	{
 		groundcheck = GameObject.Find("Groundcheck").GetComponent<Transform>();
 		v_rigidbody2D = GetComponent<Rigidbody2D>();
@@ -40,7 +40,8 @@ public class EntityMovement : MonoBehaviour
 			OnLandEvent = new UnityEvent();
 	}
 
-	private void FixedUpdate() {
+	private void FixedUpdate() //used for physics calculations, FixedUpdate gets called 50 times per second regardless of Fps
+	{
 		bool wasgrounded = grounded;
 		grounded = false;
 
@@ -55,7 +56,8 @@ public class EntityMovement : MonoBehaviour
 		}
 	}
 	
-	public void Move(float move, bool jump) {
+	public void Move(float move, bool jump) 
+	{
 
 		if (grounded || aircontrol) {
 
@@ -76,7 +78,8 @@ public class EntityMovement : MonoBehaviour
 		}
 	}
 	
-	private void Flip() {
+	private void Flip() 
+	{
 		// Switch the way the entity is labelled as facing.
 		facingright = !facingright;
 		

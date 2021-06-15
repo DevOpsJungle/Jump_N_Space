@@ -1,3 +1,10 @@
+/*
+ * Script: Player Movement
+ * Author: Felix Schneider
+ * Last Change: 20.05.21
+ * Not used anymore
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
