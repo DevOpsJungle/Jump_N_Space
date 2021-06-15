@@ -15,24 +15,23 @@ public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private Transform chunk_start;
     [SerializeField] private List <Transform> chunk_list;
-    [Range(0, 10f)] [SerializeField] private int startchunks;
-    [Range(0, 500f)] [SerializeField] private int chunkvisibility;
+    [Range(0, 10f)] [SerializeField] private int start_chunks;
+    [Range(0, 500f)] [SerializeField] private int chunk_visibility;
     
     private Vector3 pos;
-    private Vector3 lastendposition;
+    private Vector3 last_end_position;
     
     private void Awake()
     {
-        //lastendposition = chunk_start.Find("EndPosition").position;
-        lastendposition = chunk_start.Find("EndPosition").GetComponent<Transform>().position;
+        last_end_position = chunk_start.Find("EndPosition").GetComponent<Transform>().position;
     }
 
     private void Start()
     {
-        pos = PlayerController.player_pos;
+        pos = PlayerController.GetPlayerPos();
         Instantiate(chunk_start, new Vector3(0, 0, 0), Quaternion.identity, transform.parent);
         
-        for (int i = 0; i < startchunks - 1; i++)
+        for (int i = 0; i < start_chunks - 1; i++)
         {
             PlaceChunk();
         }
@@ -40,9 +39,9 @@ public class WorldGenerator : MonoBehaviour
 
     private void Update()
     {
-        pos = PlayerController.player_pos;
+        pos = PlayerController.GetPlayerPos();
         
-        if (Vector3.Distance( pos, lastendposition) < ScreenViewport.width/2 + chunkvisibility)
+        if (Vector3.Distance( pos, last_end_position) < ScreenViewport.width/2 + chunk_visibility)
         {
             PlaceChunk();
         }
@@ -51,8 +50,8 @@ public class WorldGenerator : MonoBehaviour
     private void PlaceChunk()
     {
         Transform chosenchunk = chunk_list[Random.Range(0, chunk_list.Count)];
-        Transform lastchunktransform = PlaceChunk(chosenchunk, lastendposition);
-        lastendposition = lastchunktransform.Find("EndPosition").position;
+        Transform lastchunktransform = PlaceChunk(chosenchunk, last_end_position);
+        last_end_position = lastchunktransform.Find("EndPosition").position;
     }
 
     private Transform PlaceChunk(Transform chunkpart, Vector3 spawnposition)

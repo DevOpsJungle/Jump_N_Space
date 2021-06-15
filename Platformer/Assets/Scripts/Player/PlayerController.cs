@@ -11,24 +11,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public EntityMovement controller;
-    public static Vector3 player_pos;
-
+    
+    private static Vector3 pos;
+    
     public float runspeed = 40f;
-
     float horizontalmove = 0f;
     bool jump = false;
 
     private void Awake()
     {
         controller = GetComponent<EntityMovement>();
-        player_pos = GetComponent<Transform>().position;
+        pos = GetComponent<Transform>().position;
     }
     
     void Update()
     {
-        player_pos = GetComponent<Transform>().position;
+        pos = GetComponent<Transform>().position;
         
         horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;
 
@@ -42,5 +41,10 @@ public class PlayerController : MonoBehaviour
     {
         controller.Move(horizontalmove * Time.fixedDeltaTime, jump);
         jump = false;
+    }
+
+    public static Vector3 GetPlayerPos()
+    {
+        return pos;
     }
 }

@@ -27,12 +27,14 @@ public class ScreenViewport : MonoBehaviour
     public static float edgebottom;
     
     public EdgeCollider2D edge;
-    public Camera camera_viewport;
+    private Camera camera;
     [SerializeField] private Vector3 pos;       //Player Position
    
     void Awake()
     {
         edge = GetComponent<EdgeCollider2D>();
+        camera = CameraView.GetCamera();
+        pos = PlayerController.GetPlayerPos();
         
         FindDimensions();
     }
@@ -40,15 +42,13 @@ public class ScreenViewport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera_viewport = CameraView.camera_player;
-        pos = PlayerController.player_pos;
         FindScreenpos();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        pos = PlayerController.player_pos;
+        pos = PlayerController.GetPlayerPos();
         FindScreenpos();
 
         FindDimensions();
@@ -58,13 +58,13 @@ public class ScreenViewport : MonoBehaviour
 
     private void FindScreenpos()
     {
-        screenpos = camera_viewport.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - camera_viewport.transform.position.z));
+        screenpos = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - camera.transform.position.z));
     }
     
     public void FindDimensions()
     {
-        width = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
-        height = 1 / (camera_viewport.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
+        width = 1 / (camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
+        height = 1 / (camera.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
     }
 
     private void SetEdges()                         //set edges with camera pos --> Camera Viewport defines edges
