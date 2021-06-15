@@ -566,7 +566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 264555562}
   - component: {fileID: 264555564}
-  - component: {fileID: 264555565}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -631,20 +630,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &264555565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264555561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96717fb6a6cfcd94999f32a59d4e4b85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScreenSizeX: 0
-  ScreenSizeY: 0
 --- !u!1 &268683449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4387,6 +4372,7 @@ GameObject:
   - component: {fileID: 2066470349}
   - component: {fileID: 2066470348}
   - component: {fileID: 2066470352}
+  - component: {fileID: 2066470353}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -4495,6 +4481,14 @@ MonoBehaviour:
   slider: {fileID: 756323864}
   resolutionsdropdown: {fileID: 2093926244}
   fullscreenToggle: {fileID: 1653377465}
+--- !u!81 &2066470353
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066470347}
+  m_Enabled: 1
 --- !u!1 &2093926243
 GameObject:
   m_ObjectHideFlags: 0
