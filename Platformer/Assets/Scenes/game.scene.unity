@@ -228,6 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 170759403}
+  - component: {fileID: 170759404}
   m_Layer: 10
   m_Name: Helpscreen
   m_TagString: Untagged
@@ -250,6 +251,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170759404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170759402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1b1b3b2ccf4a2788a68515be068e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &218743080
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,8 +692,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357296827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0, z: 0}
-  m_LocalScale: {x: 13.751161, y: 8.823441, z: 1}
+  m_LocalPosition: {x: -9.06, y: 4.84, z: 0}
+  m_LocalScale: {x: 7.249612, y: 4.2855453, z: 1}
   m_Children: []
   m_Father: {fileID: 170759403}
   m_RootOrder: 0
@@ -1083,4 +1097,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edge: {fileID: 2106967838}
-  pos: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}

@@ -35,7 +35,7 @@ public class Helpscreen : MonoBehaviour
     }
 
     // LateUpdate is called after Update
-    void Update()
+    void LateUpdate()
     {
         SetHelpscreenPos();
         Debug.Log(screenpos);

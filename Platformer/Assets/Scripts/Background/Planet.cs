@@ -20,19 +20,19 @@ public class Planet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        screen_pos = ScreenViewport.screenpos;
+        screen_pos = ScreenViewport.GetScreenPos();
         transform.position = screen_pos;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         SetTransformDirectiom(x,y);
     }
 
     void SetTransformDirectiom(bool x, bool y)
     {
-        screen_pos = ScreenViewport.screenpos;
+        screen_pos = ScreenViewport.GetScreenPos();
         if (x == true && y == true)
         {
             transform.position = screen_pos + start_pos;

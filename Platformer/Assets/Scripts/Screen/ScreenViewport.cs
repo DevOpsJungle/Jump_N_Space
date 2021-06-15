@@ -18,7 +18,8 @@ public class ScreenViewport : MonoBehaviour
     public EdgeCollider2D edge;
     [SerializeField] private Camera camera;     //show private attribute in inspector
     private Vector3 pos;                        //Player Position
-    public static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
+    private static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
+    
     
     public static float width;       
     public static float height;
@@ -83,6 +84,11 @@ public class ScreenViewport : MonoBehaviour
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_3,point_4,point_1};
 
         edge.points = pointArray;
+    }
+
+    public static Vector3 GetScreenPos()
+    {
+        return screenpos;
     }
 }
 
