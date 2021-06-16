@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1267786278}
   - component: {fileID: 1267786277}
   - component: {fileID: 1267786280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: planet_low-poly_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,4 +970,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edge: {fileID: 2106967838}
-  pos: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}
