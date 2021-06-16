@@ -3,20 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Button
-  - Soundtrack
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Chunks
   - Water
   - UI
   - 
-  - Background
-  - World
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -42,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 1677021467
-    locked: 0
-  - name: World
-    uniqueID: 2043410291
-    locked: 0
-  - name: Player
-    uniqueID: 696169411
     locked: 0
