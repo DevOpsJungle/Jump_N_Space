@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Soundtrack
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Background
   - World
   - Player
-  - 
+  - UI
   - 
   - 
   - 
@@ -49,4 +51,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2500457305
+    locked: 0
+  - name: UI
+    uniqueID: 465256917
     locked: 0

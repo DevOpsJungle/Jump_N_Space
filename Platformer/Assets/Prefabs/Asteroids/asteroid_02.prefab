@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3916804706536272572}
   - component: {fileID: 3916804706536272573}
   - component: {fileID: 3916804706536272574}
+  - component: {fileID: 4234376342398623307}
   m_Layer: 7
-  m_Name: asteroid_02_0
+  m_Name: asteroid_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3916804706536272544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.49, y: 6.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1677021467
+  m_SortingLayerID: -1931630699
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 2783764349932218895, guid: 9263b5a670ec52747974f561499de8d0, type: 3}
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4234376342398623307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916804706536272544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2115a04694c094184448371d47d649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
