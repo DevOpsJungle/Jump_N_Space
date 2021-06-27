@@ -15,21 +15,20 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ScreenViewport : MonoBehaviour
 {
-    
-    public static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
-    
-    public static float width;       //show private attribute in inspector
-    public static float height;
-    
-    public static float edgeleft;
-    public static float edgeright;
-    public static float edgetop;
-    public static float edgebottom;
-    
     public EdgeCollider2D edge;
-    private Camera camera;
-    [SerializeField] private Vector3 pos;       //Player Position
-   
+    [SerializeField] private Camera camera;     //show private attribute in inspector
+    private Vector3 pos;                        //Player Position
+    private static Vector3 screenpos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
+    
+    
+    public static float width;       
+    public static float height;
+
+    private static float edgeleft;
+    private static float edgeright;
+    private static float edgetop;
+    private static float edgebottom;
+    
     void Awake()
     {
         edge = GetComponent<EdgeCollider2D>();
@@ -85,6 +84,11 @@ public class ScreenViewport : MonoBehaviour
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_3,point_4,point_1};
 
         edge.points = pointArray;
+    }
+
+    public static Vector3 GetScreenPos()
+    {
+        return screenpos;
     }
 }
 
