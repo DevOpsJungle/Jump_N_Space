@@ -10,11 +10,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
    public string scenename;  /*name of the gamescene*/
 
-   public void StartLevel()
+   public void StartScene()
    {
       SceneManager.LoadScene(scenename); /*load the scene*/
    }
