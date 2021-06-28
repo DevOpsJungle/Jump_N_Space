@@ -22,8 +22,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        startposition = Camera.main.ScreenToWorldPoint(new Vector3(-500, -500, 0));
-        gameObject.GetComponent<Image>().rectTransform.anchoredPosition3D = startposition;
+        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigitbody*/
         reset_values();
         direction_dec = 0;
     }
@@ -67,9 +66,9 @@ public class Rocket : MonoBehaviour
 
     void reset_values()
     {
-        
-        startposition = Camera.main.ScreenToWorldPoint(new Vector3(-500, -500, 0));
-        //startposition = new Vector3(60, -45, 0);
+        var vector = new Vector3(0, 0, 0);
+        // startposition = camera.ViewportToWorldPoint(new Vector3(0.75f, -0.1f, 0));
+        startposition = new Vector3(60, -45, 0);
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
     }
 }
