@@ -5,6 +5,7 @@
  * ...I am a description...
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,42 +13,31 @@ using UnityEngine.UIElements;
 
 public class Planet : MonoBehaviour
 {
+    [SerializeField] private Transform planet;
+    private Transform cam_trans;
+    private Vector3 last_cam_pos;
+
+    [SerializeField] private float parallax;
     [SerializeField] private Vector3 start_pos;
-    [SerializeField] private Vector3 screen_pos;
-    public bool x;
-    public bool y;
+
+    private void Awake()
+    {
+        Instantiate(planet, new Vector3(0, 0, 0), Quaternion.identity, transform);
+        cam_trans = CameraView.GetCamera().transform;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        screen_pos = ScreenViewport.screenpos;
-        transform.position = screen_pos;
+        last_cam_pos = cam_trans.position - start_pos;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        SetTransformDirectiom(x,y);
-    }
-
-    void SetTransformDirectiom(bool x, bool y)
-    {
-        screen_pos = ScreenViewport.screenpos;
-        if (x == true && y == true)
-        {
-            transform.position = screen_pos + start_pos;
-        }
-        else if (x == true)
-        {
-            transform.position = new Vector3(screen_pos.x, 0 , 0) + start_pos;
-        }
-        else if (y == true)
-        {
-            transform.position = new Vector3(0, screen_pos.y , 0) + start_pos;
-        }
-        else
-        {
-            transform.position = start_pos;
-        }
+        Vector3 delta_move = cam_trans.position - last_cam_pos;
+        
+        transform.position += (delta_move * parallax);
+        last_cam_pos = cam_trans.position;
     }
 }

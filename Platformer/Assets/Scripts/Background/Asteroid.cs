@@ -31,7 +31,7 @@ public class Asteroid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         
     }
@@ -39,11 +39,7 @@ public class Asteroid : MonoBehaviour
     private void PlaceAsteroid()
     {
         Transform chosen_asteroid = asteroid_list[Random.Range(0, asteroid_list.Count)];
-        Instantiate(chosen_asteroid, new Vector3(0, 0, 0), Quaternion.identity, transform.parent);
+        Instantiate(chosen_asteroid, new Vector3(0, 0, 0), Quaternion.identity, transform);
     }
-
-    private void FlyAsteroid()
-    {
-        
-    }
+    
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: ThaleahFat_TTF SDF
+  m_Name: ThaleahFat_TTF SDF - Heading
   m_EditorClassIdentifier: 
-  hashCode: -1830451546
+  hashCode: 1110603811
   material: {fileID: 4055160471459802088}
-  materialHashCode: -974045242
+  materialHashCode: 349983779
   m_Version: 1.1.0
   m_SourceFontFileGUID: 585188cdc4600544eb408bee749e4b3a
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
@@ -2415,8 +2415,8 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _FaceColor: {r: 1, g: 0.3390224, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}

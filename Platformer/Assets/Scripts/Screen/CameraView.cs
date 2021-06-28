@@ -38,8 +38,8 @@ public class CameraView : MonoBehaviour
         camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);
     }
 
-    public static Camera GetCamera()
+    public static Camera GetCamera() /*When using GetCamera() in Update you have to use LateUpdate() else you will get the Camera properties of the Last Frame.*/ 
     {
-        return camera;
+        return Camera.main;
     }
 }

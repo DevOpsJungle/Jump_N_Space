@@ -8,7 +8,7 @@ public class Rocket : MonoBehaviour
 {
     private Vector3 direction;
     private Vector3 startposition;
-    float movingspeed = 100.0f;
+    float movingspeed = 10.0f;
     Rigidbody r_rigidbody;
     private int currentstate,direction_dec;
     public Sprite[] rocket=new Sprite[4];  /*array with all used images*/
@@ -22,6 +22,7 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
+        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigitbody*/
         reset_values();
         direction_dec = 0;
     }
@@ -44,7 +45,7 @@ public class Rocket : MonoBehaviour
             currentstate++;
         }
         
-        if (r_rigidbody.position.y>600)
+        if (r_rigidbody.position.y>60)
         {
             reset_values();
             Debug.Log(direction_dec);
@@ -67,7 +68,7 @@ public class Rocket : MonoBehaviour
     {
         var vector = new Vector3(0, 0, 0);
         // startposition = camera.ViewportToWorldPoint(new Vector3(0.75f, -0.1f, 0));
-        startposition = new Vector3(600, -450, 0);
+        startposition = new Vector3(60, -45, 0);
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
     }
 }
