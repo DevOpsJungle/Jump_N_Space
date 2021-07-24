@@ -12,11 +12,11 @@ using UnityEngine;
 
 public class CameraView : MonoBehaviour
 {
-    private new static Camera camera;
+    private static Camera cam;
 
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class CameraView : MonoBehaviour
     private void SetCamera()
     {
         var player_pos = PlayerController.GetPlayerPos();
-        var camera_pos = camera.transform;
+        var camera_pos = cam.transform;
         camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);
     }
 

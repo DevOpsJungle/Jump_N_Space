@@ -5,8 +5,6 @@
  * ...I am a description...
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public EntityMovement controller;
     
     private static Vector3 pos;
-    
     public float runspeed = 40f;
     float horizontalmove = 0f;
     bool jump = false;

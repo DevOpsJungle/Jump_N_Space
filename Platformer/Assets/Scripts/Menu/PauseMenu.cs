@@ -16,13 +16,7 @@ public class PauseMenu : MonoBehaviour
     
     public bool bind_to_key;
     public KeyCode key;
-
-    public static bool game_is_paused;
     
-    void Awake()
-    {
-        game_is_paused = false;
-    }
     
     // Update is called once per frame
     void Update()
@@ -37,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(key))
         {
-            if (game_is_paused)
+            if (GameController.game_is_paused)
                 Resume();
             else
                 Pause();
@@ -50,9 +44,7 @@ public class PauseMenu : MonoBehaviour
         {
             game_object.SetActive(false);
         }
-        
-        Time.timeScale = 1f;
-        game_is_paused = false;
+        GameController.TimeStart();
     }
 
     public void Pause()
@@ -61,11 +53,9 @@ public class PauseMenu : MonoBehaviour
         {
             game_object.SetActive(true);
         }
-        Time.timeScale = 0f;
-        game_is_paused = true;
-        Debug.Log("Help pressed!");
+        GameController.TimeStop();
     }
-
+    
     public void LoadMenu()
     {
         Debug.Log("Loading Game...");

@@ -5,18 +5,19 @@
  * Play and Quit Button in Menu
  */
 
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-   public string scenename;  /*name of the gamescene*/
-
+   public string scenename; /*name of the gamescene*/
+   
+   
    public void StartScene()
    {
       SceneManager.LoadScene(scenename); /*load the scene*/
+      GameController.TimeStart();
    }
 
    public void QuitGame()

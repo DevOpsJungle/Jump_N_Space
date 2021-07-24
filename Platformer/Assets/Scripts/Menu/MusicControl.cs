@@ -5,9 +5,7 @@
  * load the soundtrack object in other scenes
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class MusicControl : MonoBehaviour
