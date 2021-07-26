@@ -12,23 +12,26 @@ using UnityEngine;
 
 public class CameraView : MonoBehaviour
 {
-    private static Camera cam;
+    [SerializeField] private Camera cam;
+    private static Vector3 camera_pos;  //screenpos => x, y - middle of every Viewport Axis to Worldspace
 
     private void Awake()
     {
-        cam = GetComponent<Camera>();
+        cam = GameObject.Find("CameraPlayer").GetComponent<Camera>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         SetCamera();
+        GetCameraPos();
     }
 
     // LateUpdate is called after Update
-    void LateUpdate()
+    void Update()
     {
         SetCamera();
+        GetCameraPos();
     }
 
     private void SetCamera()
@@ -38,8 +41,20 @@ public class CameraView : MonoBehaviour
         camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);
     }
 
+
+    private void GetCameraPos()
+    {
+        camera_pos = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - cam.transform.position.z));
+    }
+
+
     public static Camera GetCamera() /*When using GetCamera() in Update you have to use LateUpdate() else you will get the Camera properties of the Last Frame.*/ 
     {
         return Camera.main;
+    }
+    
+    public static Vector3 GetScreenPos()
+    {
+        return camera_pos;
     }
 }

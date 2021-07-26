@@ -5,7 +5,7 @@
  * ...I am a description...
  */
 
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,42 +15,56 @@ public class Asteroid : MonoBehaviour
 {
     [SerializeField] private List <Transform> asteroid_list;
 
-    private void Awake()
-    {
-        
-    }
+    [SerializeField] private int number;
+    [SerializeField] private bool random;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        PlaceAsteroid(); 
+        StartCoroutine(Stop());
+         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(ScreenViewport.GetWidth());
+        Debug.Log(ScreenViewport.GetHeight());
     }
 
-    private void PlaceAsteroid()
+    private void PlaceAsteroid(bool b)
     {
-        Transform chosen_asteroid = asteroid_list[Random.Range(0, asteroid_list.Count)];
-        Instantiate(chosen_asteroid, Vector3Random(), Quaternion.identity, transform);
+        for (int i = 0; number >= i; i++)
+        {
+            Transform chosen_asteroid = asteroid_list[Random.Range(0, asteroid_list.Count)];
+                    if (b == true)
+                    {
+                        Instantiate(chosen_asteroid, Vector3Random(), Quaternion.identity, transform);
+                    }
+                    else
+                    {
+                        Instantiate(chosen_asteroid, Vector3.zero, Quaternion.identity, transform);
+                    }
+        }
     }
 
     private Vector3 Vector3Random()
     {
-        float w = Random.Range(-ScreenViewport.width/2, ScreenViewport.width/2);
-        float h = Random.Range(-ScreenViewport.height/2, ScreenViewport.height/2); 
+        float w = Random.Range(-(ScreenViewport.GetWidth()/2), ScreenViewport.GetWidth()/2);
+        float h = Random.Range(-(ScreenViewport.GetHeight()/2), ScreenViewport.GetHeight()/2); 
         
         Vector3 rand = new Vector3(w, h, 0);
-        Vector3 center = ScreenViewport.GetScreenPos();
-        Vector3 f = center + rand;
-        Debug.Log(rand);
-        Debug.Log(center);
+        Vector3 center = CameraView.GetScreenPos();
+        Vector3 s = center + rand;
         
-        Debug.Log(f);
-        return f;
+        Debug.Log(s);
+        return s;
     }
-    
+
+    IEnumerator Stop()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlaceAsteroid(random);
+    }
 }

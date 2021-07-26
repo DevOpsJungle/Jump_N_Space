@@ -9,14 +9,15 @@ using UnityEngine;
 
 public class ScreenViewport : MonoBehaviour
 {
-    private EdgeCollider2D edge;
+    [SerializeField] private EdgeCollider2D edge;
     [SerializeField] private Camera cam;     //show private attribute in inspector
-    private Vector3 pos;                        //Player Position
-    private static Vector3 screen_pos;            //screenpos => x, y - middle of every Viewport Axis to Worldspace
+
     
-    
+    private Vector3 pos; //Player Position
+
+
     public static float width;       
-    public static float height;
+    public static float hight;
 
     private static float edgeleft;
     private static float edgeright;
@@ -25,7 +26,8 @@ public class ScreenViewport : MonoBehaviour
     
     void Awake()
     {
-        edge = GetComponent<EdgeCollider2D>();
+        
+        edge = GameObject.Find("Boundary").GetComponent<EdgeCollider2D>();
         cam = CameraView.GetCamera();
         pos = PlayerController.GetPlayerPos();
         
@@ -35,32 +37,23 @@ public class ScreenViewport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindScreenpos();
+        FindDimensions();
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         pos = PlayerController.GetPlayerPos();
-        FindScreenpos();
 
         FindDimensions();
         SetEdges();
         SetBoundary();
-
-        Debug.Log(width);
-        Debug.Log(height);
     }
-
-    private void FindScreenpos()
-    {
-        screen_pos = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - cam.transform.position.z));
-    }
-
+    
     private void FindDimensions()
     {
         width = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).x - 0.5f);        //Viewport Transformation
-        height = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
+        hight = 1 / (cam.WorldToViewportPoint(new Vector3(1, 1, 0) + pos).y - 0.5f);
     }
 
     private void SetEdges()                         //set edges with camera pos --> Camera Viewport defines edges
@@ -68,8 +61,8 @@ public class ScreenViewport : MonoBehaviour
         edgeleft = (-width/ 2) + pos.x;
         edgeright = (width/ 2) + pos.x;
         
-        edgetop = (height / 2) + pos.y;
-        edgebottom = (-height / 2) + pos.y;
+        edgetop = (hight / 2) + pos.y;
+        edgebottom = (-hight / 2) + pos.y;
     }
     
     private void SetBoundary()                      //with edgepoints boundary can be set
@@ -83,9 +76,13 @@ public class ScreenViewport : MonoBehaviour
         edge.points = pointArray;
     }
 
-    public static Vector3 GetScreenPos()
+    public static float GetWidth()
     {
-        return screen_pos;
+        return width;
+    }
+    public static float GetHeight()
+    {
+        return hight;
     }
 }
 

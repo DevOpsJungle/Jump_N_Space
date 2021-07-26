@@ -41,7 +41,7 @@ public class WorldGenerator : MonoBehaviour
     {
         pos = PlayerController.GetPlayerPos();
         
-        if (Vector3.Distance( pos, last_end_position) < ScreenViewport.width/2 + chunk_visibility)
+        if (Vector3.Distance( pos, last_end_position) < ScreenViewport.GetWidth()/2 + chunk_visibility)
         {
             PlaceChunk();
         }

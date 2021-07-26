@@ -14,23 +14,20 @@ public class GameController : MonoBehaviour
     public Vector3 start_pos;
     private static Vector3 start_pos_s;
 
-    public Vector3 player_pos;
-
-    public float highscore;
-    
-    
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameController");
         if (objs.Length > 1)
+        {
             Destroy(gameObject);
+        }
         DontDestroyOnLoad(gameObject); 
         
         game_is_paused = false;
         
         start_pos_s = start_pos;
-        player_pos = PlayerController.GetPlayerPos();
     }
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -40,8 +37,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player_pos = PlayerController.GetPlayerPos();
-        highscore = Vector3.Distance(new Vector3(0, player_pos.x, 0), new Vector3(0, start_pos.x, 0));
+        
     }
 
     public static void TimeStop()

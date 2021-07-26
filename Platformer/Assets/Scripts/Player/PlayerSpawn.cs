@@ -6,7 +6,7 @@
  */
 
 
-using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +19,8 @@ public class PlayerSpawn : MonoBehaviour
     
     public EdgeCollider2D deathwall;    //just to visualize
     public float edgedeath;
-    public float last_edgedeath;
-    public float diff;
+    private float last_edgedeath;
+    private float diff;
 
 
     void Awake()

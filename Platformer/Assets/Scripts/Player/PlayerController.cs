@@ -5,6 +5,7 @@
  * ...I am a description...
  */
 
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -24,20 +25,21 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        pos = GetComponent<Transform>().position;
-        
+        controller.Move(horizontalmove * Time.fixedDeltaTime, jump); 
+        jump = false;
+
         horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
+        
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        controller.Move(horizontalmove * Time.fixedDeltaTime, jump);
-        jump = false;
+        pos = GetComponent<Transform>().position;
     }
 
     public static Vector3 GetPlayerPos()
