@@ -9,10 +9,11 @@ public class Rocket : MonoBehaviour
     private Vector3 direction;
     private Vector3 startposition;
     float movingspeed = 10.0f;
+   
     Rigidbody r_rigidbody;
     private int currentstate,direction_dec;
     public Sprite[] rocket=new Sprite[4];  /*array with all used images*/
-    // public Camera camera;
+    public Camera cam;
 
     void Awake()
     {
@@ -67,8 +68,9 @@ public class Rocket : MonoBehaviour
     void reset_values()
     {
         var vector = new Vector3(0, 0, 0);
-        // startposition = camera.ViewportToWorldPoint(new Vector3(0.75f, -0.1f, 0));
-        startposition = new Vector3(60, -45, 0);
+        startposition = cam.ScreenToWorldPoint(new Vector3(1500,200 , - cam.transform.position.z));
+        //startposition = new Vector3(60, -45, 0);
+        
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
     }
 }

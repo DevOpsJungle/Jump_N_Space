@@ -23,7 +23,6 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         StartCoroutine(Stop());
-         
     }
 
     // Update is called once per frame
