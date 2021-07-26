@@ -9,7 +9,6 @@ public class Rocket : MonoBehaviour
     private Vector3 direction;
     private Vector3 startposition;
     float movingspeed = 10.0f;
-   
     Rigidbody r_rigidbody;
     private int currentstate,direction_dec;
     public Sprite[] rocket=new Sprite[4];  /*array with all used images*/
@@ -17,8 +16,9 @@ public class Rocket : MonoBehaviour
 
     void Awake()
     {
+        cam = CameraView.GetCamera();
         r_rigidbody = GetComponent<Rigidbody>(); /*assign rigitbody*/
-        //camera = GetComponent<Camera>();
+        Time.timeScale = 1.0f;
     }
     // Start is called before the first frame update
     void Start()
@@ -27,10 +27,13 @@ public class Rocket : MonoBehaviour
         reset_values();
         direction_dec = 0;
     }
-
+    
     // Update is called once per frame
+ 
     void FixedUpdate()
     {
+        //Debug.Log(cam.WorldToScreenPoint(r_rigidbody.position));
+        
         r_rigidbody.velocity = direction * movingspeed; /*set velocity*/
         if (currentstate != 0 && currentstate%20==0) /*animation change every 20 frames*/
         {
@@ -46,30 +49,31 @@ public class Rocket : MonoBehaviour
             currentstate++;
         }
         
-        if (r_rigidbody.position.y>60)
+        if (r_rigidbody.position.y > cam.ScreenToWorldPoint(new Vector3(0,1080,0)).y)
         {
             reset_values();
-            Debug.Log(direction_dec);
+            
             if (direction_dec == 0)
             {
                 direction.x = -direction.x;
                 startposition.x = -startposition.x;
-                Debug.Log(direction_dec);
+                
                 direction_dec++;
             }
             else if (direction_dec!=0)
             {
                 direction_dec = 0;
             }
+            Debug.Log(startposition);
+            
             gameObject.GetComponent<Image>().rectTransform.anchoredPosition3D = startposition; /*reset image*/
+            //Debug.Log(cam.WorldToScreenPoint(r_rigidbody.position));
         }
     }
 
     void reset_values()
     {
-        var vector = new Vector3(0, 0, 0);
-        startposition = cam.ScreenToWorldPoint(new Vector3(1500,200 , - cam.transform.position.z));
-        //startposition = new Vector3(60, -45, 0);
+        startposition = (new Vector3(960f, -460f, 0));
         
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
     }
