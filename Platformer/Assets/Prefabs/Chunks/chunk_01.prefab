@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2905551568927860951}
   - component: {fileID: 661539721581867529}
   - component: {fileID: 1288808915485951642}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Tilemap_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5466823017092855646}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: EndPosition
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 8475494408975535078}
   - component: {fileID: 7068076812410736099}
   - component: {fileID: 3310811677804345102}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Tilemap_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1772,7 +1772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3263670839527268884}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: chunk_01
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -1805,7 +1805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5890057704034728040}
   - component: {fileID: 3361322347202072748}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
