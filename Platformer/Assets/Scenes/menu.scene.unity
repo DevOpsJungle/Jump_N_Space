@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0f4beb337a6524c84f64b000944ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_pos: {x: 12.6, y: 5, z: 0}
+  start_pos: {x: 8, y: 6, z: 0}
 --- !u!4 &40513987
 Transform:
   m_ObjectHideFlags: 0

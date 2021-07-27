@@ -1123,7 +1123,8 @@ MonoBehaviour:
   - {fileID: 1116566980441319696, guid: 1e2d91b80281bde48956135fb65adbcd, type: 3}
   - {fileID: 3916804706536272572, guid: f7fe7849b2bba0141af5cce87b0ca540, type: 3}
   number: 5
-  random: 1
+  random_viewport: 1
+  random_deathwall: 0
 --- !u!1 &270504541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0f4beb337a6524c84f64b000944ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_pos: {x: 12.6, y: 5, z: 0}
+  start_pos: {x: 8, y: 6, z: 0}
 --- !u!4 &305060623
 Transform:
   m_ObjectHideFlags: 0
@@ -3230,8 +3231,9 @@ MonoBehaviour:
   - {fileID: 3425674369968614663, guid: 897c2580560d9d945b87c18c0854c7b9, type: 3}
   - {fileID: 5418049260164588322, guid: 130488d25d869fe439c70359eedc1f4b, type: 3}
   - {fileID: 4098580930210804686, guid: db4f6df87772501499c82ecb520d3587, type: 3}
-  number: 0
-  random: 0
+  number: 3
+  random_viewport: 0
+  random_deathwall: 1
 --- !u!1 &1656243268
 GameObject:
   m_ObjectHideFlags: 0

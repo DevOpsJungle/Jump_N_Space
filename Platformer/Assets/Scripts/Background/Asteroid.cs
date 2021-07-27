@@ -6,6 +6,7 @@
  */
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,22 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private List <Transform> asteroid_list;
 
     [SerializeField] private int number;
-    [SerializeField] private bool random;
-    
+    [SerializeField] private bool random_viewport;
+    [SerializeField] private bool random_deathwall;
+
+
+    private void Awake()
+    {
+        if (random_viewport == random_deathwall)
+        {
+            Debug.LogException(new Exception("Either random_viewport or random_deathwall"));
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
-    {
-        StartCoroutine(Stop());
+    { 
+        StartCoroutine(Wait());
     }
 
     // Update is called once per frame
@@ -31,39 +41,54 @@ public class Asteroid : MonoBehaviour
         Debug.Log(ScreenViewport.GetWidth());
         Debug.Log(ScreenViewport.GetHeight());
     }
+    
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.1f);
 
-    private void PlaceAsteroid(bool b)
+        if (random_viewport)
+        {
+            PlaceAsteroid(RandomViewport());
+        }
+        else if (random_deathwall)
+        {
+            PlaceAsteroid(RandomDeathwall());
+        }
+        else
+        {
+            PlaceAsteroid(new Vector3(0,0,0));
+        }
+    }
+    
+    private void PlaceAsteroid(Vector3 v)
     {
         for (int i = 0; number >= i; i++)
         {
             Transform chosen_asteroid = asteroid_list[Random.Range(0, asteroid_list.Count)];
-                    if (b == true)
-                    {
-                        Instantiate(chosen_asteroid, Vector3Random(), Quaternion.identity, transform);
-                    }
-                    else
-                    {
-                        Instantiate(chosen_asteroid, Vector3.zero, Quaternion.identity, transform);
-                    }
+            Instantiate(chosen_asteroid, v, Quaternion.identity, transform);
         }
     }
 
-    private Vector3 Vector3Random()
+    private Vector3 RandomViewport()
     {
         float w = Random.Range(-(ScreenViewport.GetWidth()/2), ScreenViewport.GetWidth()/2);
         float h = Random.Range(-(ScreenViewport.GetHeight()/2), ScreenViewport.GetHeight()/2); 
         
         Vector3 rand = new Vector3(w, h, 0);
         Vector3 center = CameraView.GetScreenPos();
-        Vector3 s = center + rand;
-        
-        Debug.Log(s);
-        return s;
+        Vector3 v = center + rand;
+        return v;
     }
 
-    IEnumerator Stop()
+    private Vector3 RandomDeathwall()
     {
-        yield return new WaitForSeconds(0.1f);
-        PlaceAsteroid(random);
+        float h = Random.Range(-(ScreenViewport.GetHeight()/2), ScreenViewport.GetHeight()/2); 
+        
+        Vector3 rand = new Vector3(0, h, 0);
+        Vector3 center = CameraView.GetScreenPos();
+        Vector3 v = center + rand;
+        return rand;
     }
+
+    
 }
