@@ -18,7 +18,7 @@ public class PlayerSpawn : MonoBehaviour
     public float falldeath;     //0 is bottom of start chunk
     
     public EdgeCollider2D deathwall;    //just to visualize
-    public float edgedeath;
+    public static float edgedeath;
     private float last_edgedeath;
     private float diff;
 
@@ -51,8 +51,8 @@ public class PlayerSpawn : MonoBehaviour
 
     private void SetDeathwall()
     {
-        Vector2 point_1 = new Vector2(edgedeath, 10);
-        Vector2 point_2 = new Vector2(edgedeath, -10);
+        Vector2 point_1 = new Vector2(edgedeath, 100);
+        Vector2 point_2 = new Vector2(edgedeath, -100);
                 
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_1};
         
