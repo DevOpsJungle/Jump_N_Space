@@ -6,8 +6,8 @@ public class AsteroidMovement : MonoBehaviour
 
     private Vector3 pos;
     private float velocity;
-    private readonly float anim_rotation_speed = 2.5f;
-    private readonly float max_velocity = 3f;
+    private readonly float anim_rotation_speed = 5f;
+    private readonly float max_velocity = 2.5f;
 
 
     // Start is called before the first frame update
