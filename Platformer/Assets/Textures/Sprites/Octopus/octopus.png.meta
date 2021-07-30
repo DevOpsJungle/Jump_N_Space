@@ -232,12 +232,12 @@ TextureImporter:
       name: octopus_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: octopus_1
       rect:
         serializedVersion: 2
-        x: 560
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: octopus_2
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: octopus_3
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +316,12 @@ TextureImporter:
       name: octopus_4
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: octopus_5
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: octopus_6
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 2000
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 2050
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: octopus_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -400,12 +400,12 @@ TextureImporter:
       name: octopus_8
       rect:
         serializedVersion: 2
-        x: 560
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -421,12 +421,12 @@ TextureImporter:
       name: octopus_9
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -442,12 +442,12 @@ TextureImporter:
       name: octopus_10
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -463,12 +463,12 @@ TextureImporter:
       name: octopus_11
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: octopus_12
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,12 +505,12 @@ TextureImporter:
       name: octopus_13
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 1600
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 1650
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -526,12 +526,12 @@ TextureImporter:
       name: octopus_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -547,12 +547,12 @@ TextureImporter:
       name: octopus_15
       rect:
         serializedVersion: 2
-        x: 560
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -568,12 +568,12 @@ TextureImporter:
       name: octopus_16
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -589,12 +589,12 @@ TextureImporter:
       name: octopus_17
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -610,12 +610,12 @@ TextureImporter:
       name: octopus_18
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -631,12 +631,12 @@ TextureImporter:
       name: octopus_19
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -652,12 +652,12 @@ TextureImporter:
       name: octopus_20
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 1200
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 1250
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -673,12 +673,12 @@ TextureImporter:
       name: octopus_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -694,12 +694,12 @@ TextureImporter:
       name: octopus_22
       rect:
         serializedVersion: 2
-        x: 560
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -715,12 +715,12 @@ TextureImporter:
       name: octopus_23
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -736,12 +736,12 @@ TextureImporter:
       name: octopus_24
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -757,12 +757,12 @@ TextureImporter:
       name: octopus_25
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -778,12 +778,12 @@ TextureImporter:
       name: octopus_26
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -799,12 +799,12 @@ TextureImporter:
       name: octopus_27
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 800
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 850
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -820,12 +820,12 @@ TextureImporter:
       name: octopus_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -841,12 +841,12 @@ TextureImporter:
       name: octopus_29
       rect:
         serializedVersion: 2
-        x: 560
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -862,12 +862,12 @@ TextureImporter:
       name: octopus_30
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -883,12 +883,12 @@ TextureImporter:
       name: octopus_31
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -904,12 +904,12 @@ TextureImporter:
       name: octopus_32
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -925,12 +925,12 @@ TextureImporter:
       name: octopus_33
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -946,12 +946,12 @@ TextureImporter:
       name: octopus_34
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 400
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 450
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -967,12 +967,12 @@ TextureImporter:
       name: octopus_35
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 100
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -988,12 +988,12 @@ TextureImporter:
       name: octopus_36
       rect:
         serializedVersion: 2
-        x: 560
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 660
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1009,12 +1009,12 @@ TextureImporter:
       name: octopus_37
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1220
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1030,12 +1030,12 @@ TextureImporter:
       name: octopus_38
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 1780
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1051,12 +1051,12 @@ TextureImporter:
       name: octopus_39
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2340
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1072,12 +1072,12 @@ TextureImporter:
       name: octopus_40
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 2900
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1093,12 +1093,12 @@ TextureImporter:
       name: octopus_41
       rect:
         serializedVersion: 2
-        x: 3360
-        y: 0
-        width: 560
-        height: 400
-      alignment: 3
-      pivot: {x: 1, y: 1}
+        x: 3460
+        y: 50
+        width: 360
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
