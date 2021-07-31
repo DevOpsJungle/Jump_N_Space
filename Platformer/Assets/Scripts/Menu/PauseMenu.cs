@@ -1,8 +1,8 @@
 /*
  * Script: Help Screen
- * Author: Johannes Wilhelm
+ * Author: Johannes Wilhelm, Philip Noack
  * Last Change: 21.06.2021
- * ...I am a description...
+ * bind ESC, controls status HelpUI and load Help- and Pausemenu
  */
 
 using System;
@@ -12,38 +12,57 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     //public GameObject ui;
-    public List <GameObject> ui;
-    
+    public List<GameObject> ui;
+    public GameObject HelpButton;
+    public GameObject HelpUI;
+
     public bool bind_to_key;
     public KeyCode key;
-    
-    
+
+
     // Update is called once per frame
     void Update()
     {
+        if (HelpUI.activeSelf) //check if the HelpUi is active
+        {
+            bind_to_key = false; //ESC will ignore
+        }
+        else
+        {
+            bind_to_key = true; //ESC can be used normally
+        }
         if (bind_to_key == true)
         {
             KeyBind();
         }
     }
-    
+
     private void KeyBind()
     {
-        if (Input.GetKeyDown(key))
         {
-            if (GameController.game_is_paused)
-                Resume();
-            else
-                Pause();
+           if (Input.GetKeyDown(key))
+           {
+               if (GameController.game_is_paused) {
+                   ShowHelp();
+                   Resume();
+               }
+               else {
+                   Pause();
+                   HideHelp();
+               }
+           } 
         }
+
+        
     }
-    
+
     public void Resume()
     {
         foreach (var game_object in ui)
         {
             game_object.SetActive(false);
         }
+
         GameController.TimeStart();
     }
 
@@ -53,16 +72,19 @@ public class PauseMenu : MonoBehaviour
         {
             game_object.SetActive(true);
         }
+
         GameController.TimeStop();
     }
-    
-    public void LoadMenu()
-    {
-        Debug.Log("Loading Game...");
-    }
 
-    public void QuitGame()
+    public void HideHelp() //hide Helpbutton if Pausemenu is active
     {
-        Debug.Log("Quitting Game...");
+        HelpButton.SetActive(false);
+    }
+    public void ShowHelp() //show Helpbutton if Pausemenu isn´t active
+    {
+        HelpButton.SetActive(true);
     }
 }
+
+    
+ 

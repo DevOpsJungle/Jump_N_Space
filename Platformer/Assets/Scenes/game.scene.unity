@@ -576,6 +576,8 @@ MonoBehaviour:
   ui:
   - {fileID: 813833841}
   - {fileID: 1591104191}
+  HelpButton: {fileID: 0}
+  HelpUI: {fileID: 0}
   bind_to_key: 0
   key: 0
 --- !u!23 &55972842
@@ -751,8 +753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -100}
-  m_SizeDelta: {x: 110, y: 110}
+  m_AnchoredPosition: {x: 75, y: -75}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148645715
 MonoBehaviour:
@@ -769,6 +771,8 @@ MonoBehaviour:
   ui:
   - {fileID: 270504541}
   - {fileID: 1656243268}
+  HelpButton: {fileID: 0}
+  HelpUI: {fileID: 0}
   bind_to_key: 0
   key: 0
 --- !u!23 &148645716
@@ -1657,6 +1661,8 @@ MonoBehaviour:
   ui:
   - {fileID: 270504541}
   - {fileID: 1656243268}
+  HelpButton: {fileID: 148645713}
+  HelpUI: {fileID: 1656243268}
   bind_to_key: 1
   key: 127
 --- !u!114 &540990064
@@ -2439,6 +2445,8 @@ MonoBehaviour:
   ui:
   - {fileID: 270504541}
   - {fileID: 1656243268}
+  HelpButton: {fileID: 0}
+  HelpUI: {fileID: 0}
   bind_to_key: 0
   key: 0
 --- !u!23 &1181663640
@@ -3280,7 +3288,7 @@ GameObject:
   - component: {fileID: 1656243269}
   m_Layer: 10
   m_Name: HelpUI
-  m_TagString: Untagged
+  m_TagString: HelpUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3805,6 +3813,8 @@ MonoBehaviour:
   ui:
   - {fileID: 813833841}
   - {fileID: 1591104191}
+  HelpButton: {fileID: 148645713}
+  HelpUI: {fileID: 1656243268}
   bind_to_key: 1
   key: 27
 --- !u!1 &1900725046
