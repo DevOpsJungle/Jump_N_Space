@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /*
  * Script: Rocket
  * Author: Philipp Scheffler
- * Last Change: 26.07.21
+ * Last Change: 27.07.21
  * Flying rocket in menu
  */
 
