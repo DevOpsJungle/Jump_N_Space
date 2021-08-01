@@ -20,17 +20,17 @@ public class MovingPlatform : MonoBehaviour
     {
         if (!switching)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetB.position, speed); 
+            transform.position = Vector3.MoveTowards(transform.position, targetA.position, speed); 
         }
         else if (switching)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetA.position, speed); 
+            transform.position = Vector3.MoveTowards(transform.position, targetB.position, speed); 
         }
-        if (transform.position == targetB.position)
+        if (transform.position == targetA.position)
         {
             switching = true;
         }
-        else if (transform.position == targetA.position)
+        else if (transform.position == targetB.position)
         {
             switching = false;
         }
