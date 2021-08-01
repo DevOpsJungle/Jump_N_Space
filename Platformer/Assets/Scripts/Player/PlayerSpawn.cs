@@ -62,18 +62,17 @@ public class PlayerSpawn : MonoBehaviour
 
     private void FunktionDeathwall()
     {
-        
-        last_edgedeath = edgedeath;
         if (diff < linear_speed)
         {
+            last_edgedeath = edgedeath;
             edgedeath = Exponential(edgedeath);
-            
+            diff = edgedeath - last_edgedeath;
         }
         else
         {
             edgedeath = edgedeath + linear_speed;
+            diff = linear_speed;
         }
-        diff = edgedeath - last_edgedeath;
     }
     private float Exponential(float i)
     {
