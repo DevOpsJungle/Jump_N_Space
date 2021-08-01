@@ -9,25 +9,25 @@ public class Octopus : MonoBehaviour
     [SerializeField] private GameObject octopus;
     private GameObject octopus_instance;
 
-    private Vector3 start_pos;
+    private Vector3 pos;
     private float lerp_speed = 1f;
 
     private void Awake()
     {
-        start_pos = new Vector3(PlayerSpawn.edgedeath, GameController.GetStartPos().y, GameController.GetStartPos().z);
-        octopus_instance = Instantiate(octopus, start_pos, Quaternion.identity,transform);
+        pos = new Vector3(PlayerSpawn.edgedeath, GameController.GetStartPos().y, GameController.GetStartPos().z);
+        octopus_instance = Instantiate(octopus, pos, Quaternion.identity,transform);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(PlayerSpawn.edgedeath,start_pos.y,start_pos.z);
+        octopus_instance.transform.position = new Vector3(PlayerSpawn.edgedeath,pos.y,pos.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        octopus_instance.transform.position = new Vector3(PlayerSpawn.edgedeath, Lerp(octopus_instance.transform.position ,PlayerController.GetPlayerPos()), start_pos.z);
+        octopus_instance.transform.position = new Vector3(PlayerSpawn.edgedeath, Lerp(octopus_instance.transform.position ,PlayerController.GetPlayerPos()), pos.z);
     }
 
     private float Lerp(Vector3 last, Vector3 player_pos)

@@ -20,7 +20,8 @@ public class PlayerSpawn : MonoBehaviour
     public EdgeCollider2D deathwall;    //just to visualize
     public static float edgedeath;
     private float last_edgedeath;
-    private float diff;
+    [SerializeField] private float diff;
+    private float linear_speed = 0.0125f;
 
 
     void Awake()
@@ -61,23 +62,31 @@ public class PlayerSpawn : MonoBehaviour
 
     private void FunktionDeathwall()
     {
-        diff = edgedeath - last_edgedeath;
+        
         last_edgedeath = edgedeath;
-        if (diff < 0.025f)
+        if (diff < linear_speed)
         {
             edgedeath = Exponential(edgedeath);
             
         }
         else
         {
-            edgedeath = edgedeath + 0.025f;
+            edgedeath = edgedeath + linear_speed;
         }
+        diff = edgedeath - last_edgedeath;
     }
     private float Exponential(float i)
     {
         {
-            i = i + 1.0f + Time.deltaTime * 0.05f * i;
-            return i - 1.0f;
+            if (GameController.game_is_paused)
+            {
+                return i;
+            }
+            else
+            {
+               i = i + Time.fixedDeltaTime * 0.05f * i;
+               return i;
+            }
         }
     }
 }
