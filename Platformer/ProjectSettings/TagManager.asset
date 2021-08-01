@@ -7,6 +7,7 @@ TagManager:
   - Soundtrack
   - Button
   - HelpUI
+  - HelpButton
   layers:
   - Default
   - TransparentFX

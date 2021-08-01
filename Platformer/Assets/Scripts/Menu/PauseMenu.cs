@@ -13,12 +13,26 @@ public class PauseMenu : MonoBehaviour
 {
     //public GameObject ui;
     public List<GameObject> ui;
-    public GameObject HelpButton;
-    public GameObject HelpUI;
+    [SerializeField] private GameObject HelpButton;
+    [SerializeField] private GameObject HelpUI;
 
     public bool bind_to_key;
     public KeyCode key;
 
+
+    private void Awake()
+    {
+        HelpButton = GameObject.FindWithTag("HelpButton");
+        HelpUI = GameObject.FindWithTag("HelpUI");
+    }
+
+    private void Start()
+    {
+        foreach (var game_object in ui)
+        {
+            game_object.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,8 +66,6 @@ public class PauseMenu : MonoBehaviour
                }
            } 
         }
-
-        
     }
 
     public void Resume()
@@ -62,7 +74,7 @@ public class PauseMenu : MonoBehaviour
         {
             game_object.SetActive(false);
         }
-
+        ShowHelp();
         GameController.TimeStart();
     }
 

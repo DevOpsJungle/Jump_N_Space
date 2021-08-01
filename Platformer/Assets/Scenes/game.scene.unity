@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 148645715}
   m_Layer: 5
   m_Name: HelpButton
-  m_TagString: Button
+  m_TagString: HelpButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1166,7 +1166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &270504542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,7 +1617,6 @@ GameObject:
   - component: {fileID: 540990065}
   - component: {fileID: 540990064}
   - component: {fileID: 540990063}
-  - component: {fileID: 540990067}
   m_Layer: 10
   m_Name: Helpscreen_Canvas
   m_TagString: Untagged
@@ -1661,8 +1660,8 @@ MonoBehaviour:
   ui:
   - {fileID: 270504541}
   - {fileID: 1656243268}
-  HelpButton: {fileID: 148645713}
-  HelpUI: {fileID: 1656243268}
+  HelpButton: {fileID: 0}
+  HelpUI: {fileID: 0}
   bind_to_key: 1
   key: 127
 --- !u!114 &540990064
@@ -1726,25 +1725,6 @@ Canvas:
   m_SortingLayerID: 465256917
   m_SortingOrder: -5
   m_TargetDisplay: 0
---- !u!95 &540990067
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540990061}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 91058ff005aee9742817943441fe7d90, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &571388701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1773,7 @@ MonoBehaviour:
   player: {fileID: 6785616933947069682, guid: 66826f2a92fca824eabfc8dee44c21c0, type: 3}
   falldeath: -10
   deathwall: {fileID: 0}
+  diff: 0
 --- !u!114 &571388704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,7 +1804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &813833842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3182,7 +3163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1591104192
 Transform:
   m_ObjectHideFlags: 0
@@ -3292,7 +3273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1656243269
 Transform:
   m_ObjectHideFlags: 0
@@ -3813,8 +3794,8 @@ MonoBehaviour:
   ui:
   - {fileID: 813833841}
   - {fileID: 1591104191}
-  HelpButton: {fileID: 148645713}
-  HelpUI: {fileID: 1656243268}
+  HelpButton: {fileID: 0}
+  HelpUI: {fileID: 0}
   bind_to_key: 1
   key: 27
 --- !u!1 &1900725046
