@@ -18,9 +18,10 @@ public class PlayerSpawn : MonoBehaviour
     public float falldeath;     //0 is bottom of start chunk
     
     public EdgeCollider2D deathwall;    //just to visualize
+    [SerializeField] private float diff;
     public static float edgedeath;
     private float last_edgedeath;
-    [SerializeField] private float diff;
+    
     private float linear_speed = 0.0125f;
 
 
