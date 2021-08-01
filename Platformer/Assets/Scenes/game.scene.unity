@@ -1560,8 +1560,13 @@ MonoBehaviour:
   - {fileID: 7914269759042668022, guid: 5c0b792ab45694c4fb077fdc25627ec9, type: 3}
   - {fileID: 5674299457822991262, guid: 31861becc1590c449a4dcde3f7d21e7a, type: 3}
   - {fileID: 753666817938001011, guid: fe4637a3bba8fc34da73a53e8041c7a2, type: 3}
-  - {fileID: 7159635805915818533, guid: 413e7c7f47115364b9ae25e631a9dba7, type: 3}
+  - {fileID: 2539241426160341325, guid: 413e7c7f47115364b9ae25e631a9dba7, type: 3}
+  - {fileID: 2141774983553991139, guid: e16763fb02de5804084c464e98d7d64b, type: 3}
+  - {fileID: 1409281545281889070, guid: 87b99d4cbd5e34940bb4ab49ace10728, type: 3}
   - {fileID: 9172623300836663084, guid: 99e8cb10fa5ad8f41b1237520a162cb5, type: 3}
+  - {fileID: 6189605052392818437, guid: 4a55c9d8da5dd7f4d942dc0fb741b685, type: 3}
+  - {fileID: 9174449870661885357, guid: 9f209ac78034a074496b054c13bf6517, type: 3}
+  - {fileID: 5358180399472014838, guid: 5ec1f54928323e142bc136bc93655029, type: 3}
   start_chunks: 3
   chunk_visibility: 40
 --- !u!1 &540990061
@@ -1694,7 +1699,7 @@ GameObject:
   - component: {fileID: 571388702}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3927,7 +3932,7 @@ GameObject:
   - component: {fileID: 2068000090}
   m_Layer: 9
   m_Name: PlayerObject
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
