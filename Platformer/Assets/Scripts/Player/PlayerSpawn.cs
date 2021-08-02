@@ -13,7 +13,9 @@ using UnityEngine.SceneManagement;
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject death;
     private GameObject player_instance;
+    
     
     public float falldeath;     //0 is bottom of start chunk
     
@@ -38,11 +40,16 @@ public class PlayerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edgedeath)
+        if (!GameController.game_is_paused)
         {
-            Destroy(player_instance);
-            SceneManager.LoadScene("game.scene");
+            if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edgedeath)
+            {
+                GameController.TimeStop();
+                Destroy(player_instance);
+                death.SetActive(true);
+            }
         }
+        
         
         //Deathwall
         FunktionDeathwall();

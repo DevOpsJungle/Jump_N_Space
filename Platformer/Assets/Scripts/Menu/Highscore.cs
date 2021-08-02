@@ -6,7 +6,7 @@ public class Highscore : MonoBehaviour
 {
     public Vector3 start_pos;
     public Vector3 player_pos;
-    public float highscore;
+    public static float highscore;
     public float distance;
     public float last_distance;
     
@@ -35,5 +35,9 @@ public class Highscore : MonoBehaviour
             highscore = distance;
         }
 
+    }
+    public static float GetHighscore()
+    {
+        return highscore;
     }
 }

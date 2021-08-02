@@ -28,8 +28,7 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ScreenViewport.GetWidth());
-        Debug.Log(ScreenViewport.GetHeight());
+        
     }
 
     private void PlaceAsteroid(bool b)
@@ -57,7 +56,6 @@ public class Asteroid : MonoBehaviour
         Vector3 center = CameraView.GetScreenPos();
         Vector3 s = center + rand;
         
-        Debug.Log(s);
         return s;
     }
 
