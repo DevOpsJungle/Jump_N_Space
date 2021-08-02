@@ -34,6 +34,12 @@ public class Highscore : MonoBehaviour
         {
             highscore = distance;
         }
-
     }
+    
+    public float GetHighscore()
+    {
+        return highscore;
+    }
+    
+    
 }

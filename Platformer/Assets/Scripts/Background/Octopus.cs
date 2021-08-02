@@ -1,6 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Script: AsteroidMovement
+ * Author: Felix Schneider
+ * Last Change: 02.08.21
+ * Handles Octopus Instantiation and Movement
+ */
+
 using UnityEngine;
 
 public class Octopus : MonoBehaviour
@@ -34,7 +38,6 @@ public class Octopus : MonoBehaviour
     {
         
         float value;
-        //Time.deltaTime * speed
         value = Mathf.Lerp(last.y, player_pos.y, Time.deltaTime * lerp_speed);
         return value;
     }
