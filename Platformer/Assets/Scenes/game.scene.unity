@@ -1145,10 +1145,10 @@ MonoBehaviour:
   - {fileID: 2311750576625318245, guid: e6d8a08fe8698a1468d731459d106194, type: 3}
   - {fileID: 899639023649057213, guid: b717753b2d4b6b342bdd48cdfd0e0043, type: 3}
   number: 5
-  random_viewport: 1
-  random_deathwall: 0
+  viewport: 1
+  deathwall: 0
   position: 0
-  viewport_pos: {x: 0, y: 0, z: 0}
+  pos: {x: 0, y: 0, z: 0}
 --- !u!1 &270504541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0f4beb337a6524c84f64b000944ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_pos: {x: 13.57, y: 6, z: 0}
+  start_pos: {x: 10, y: 6, z: 0}
 --- !u!4 &305060623
 Transform:
   m_ObjectHideFlags: 0
@@ -3510,7 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 1805046614545020401, guid: c448f417e1637a949ac0957044fa7ae9, type: 3}
-  pos: {x: 0, y: 0, z: 0}
+  pos: {x: 10.77, y: 5.3, z: 0}
   parallax: 0.75
 --- !u!1 &1871489395
 GameObject:
@@ -3898,11 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ed0ad5057ffc64a961dbfad8bd2c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_pos: {x: 0, y: 0, z: 0}
-  player_pos: {x: 0, y: 0, z: 0}
   highscore: 0
-  distance: 0
-  last_distance: 0
 --- !u!4 &1953784570
 Transform:
   m_ObjectHideFlags: 0
@@ -3911,7 +3907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953784568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.455032, y: -7.0062494, z: -14.377842}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

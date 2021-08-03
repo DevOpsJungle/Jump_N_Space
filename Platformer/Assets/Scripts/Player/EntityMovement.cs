@@ -3,88 +3,90 @@
  * Author: Vincent Becker
  * Source: https://github.com/Brackeys/2D-Character-Controller
  * Last Change: 01.06.21
- * ...I am a description...
+ * Script that handles the core aspects of the player movement
  */
 
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EntityMovement : MonoBehaviour
 {
-	[SerializeField] private float jumpforce = 400f; // SerializeField show variable in Inspector							
-	[Range(0, .3f)] [SerializeField] private float movementsmoothing = .05f;	
-	[SerializeField] private bool aircontrol = false;							
-	[SerializeField] private LayerMask whatisground;							
-	[SerializeField] private Transform groundcheck;							
+    private const float groundedradius = .2f;           /* Radius of the overlap circle to determine if grounded */
+    [SerializeField] private float jumpforce = 400f;    /* SerializeField show variable in Inspector */
+    [Range(0, .3f)] [SerializeField] private float movementsmoothing = .05f;
+    [SerializeField] private bool aircontrol;
+    [SerializeField] private LayerMask whatisground;
+    [SerializeField] private Transform groundcheck;
 
-	const float groundedradius = .2f; // Radius of the overlap circle to determine if grounded
-	private bool grounded;
-	private Rigidbody2D v_rigidbody2D;
-	private bool facingright = true;  // For determining which way the player is currently facing.
-	private Vector3 velocity = Vector3.zero;
+    [Header("Events")] /* Structured view in the Inspector */ [Space]
+    public UnityEvent OnLandEvent;
 
-	[Header("Events")] // Structured view in the Inspector
-	[Space]
+    private bool facingright = true; /* for determining which way the player is currently facing */
+    private bool grounded;
+    private Rigidbody2D v_rigidbody2D;
+    private Vector3 velocity = Vector3.zero;
 
-	public UnityEvent OnLandEvent;
 
-	[System.Serializable]
-	public class BoolEvent : UnityEvent<bool> { }
-	
-	private void Awake() //Awake is called when the script is being loaded
-	{
-		groundcheck = GameObject.Find("Groundcheck").GetComponent<Transform>();
-		v_rigidbody2D = GetComponent<Rigidbody2D>();
+    //Awake is called when the script is being loaded
+    private void Awake()
+    {
+        groundcheck = GameObject.Find("Groundcheck").GetComponent<Transform>();
+        v_rigidbody2D = GetComponent<Rigidbody2D>();
 
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
-	}
+        if (OnLandEvent == null)
+            OnLandEvent = new UnityEvent();
+    }
 
-	private void FixedUpdate() //used for physics calculations, FixedUpdate gets called 50 times per second regardless of Fps
-	{
-		bool wasgrounded = grounded;
-		grounded = false;
+    //used for physics calculations, FixedUpdate gets called 50 times per second regardless of Fps
+    private void FixedUpdate()
+    {
+        var wasgrounded = grounded;
+        grounded = false;
 
-		// The entity is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(groundcheck.position, groundedradius, whatisground);
-		for (int i = 0; i < colliders.Length; i++) {
-			if (colliders[i].gameObject != gameObject) {
-				grounded = true;
-				if (!wasgrounded)
-					OnLandEvent.Invoke();
-			}
-		}
-	}
-	
-	public void Move(float move, bool jump) 
-	{
+        /* The entity is grounded if a circlecast to the groundcheck position hits anything designated as ground */
+        var colliders = Physics2D.OverlapCircleAll(groundcheck.position, groundedradius, whatisground);
+        for (var i = 0; i < colliders.Length; i++)
+            if (colliders[i].gameObject != gameObject)
+            {
+                grounded = true;
+                if (!wasgrounded)
+                    OnLandEvent.Invoke();
+            }
+    }
 
-		if (grounded || aircontrol) {
+    public void Move(float move, bool jump)
+    {
+        if (grounded || aircontrol)
+        {
+            Vector3 targetVelocity = new Vector2(move * 10f, v_rigidbody2D.velocity.y);
+            /* Smooth and apply the velocity to the entity */
+            v_rigidbody2D.velocity =
+                Vector3.SmoothDamp(v_rigidbody2D.velocity, targetVelocity, ref velocity, movementsmoothing);
 
-			Vector3 targetVelocity = new Vector2(move * 10f, v_rigidbody2D.velocity.y);
-			// Smooth and apply the velocity to the entity
-			v_rigidbody2D.velocity = Vector3.SmoothDamp(v_rigidbody2D.velocity, targetVelocity, ref velocity, movementsmoothing);
-			
-			if (move > 0 && !facingright) {
-				Flip();
-			}
-			else if (move < 0 && facingright) {
-				Flip();
-			}
-		}
-		if (grounded && jump) {
-			grounded = false;
-			v_rigidbody2D.AddForce(new Vector2(0f, jumpforce));
-		}
-	}
-	
-	private void Flip() 
-	{
-		// Switch the way the entity is labelled as facing.
-		facingright = !facingright;
-		
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
+            if (move > 0 && !facingright)
+                Flip();
+            else if (move < 0 && facingright) Flip();
+        }
+
+        if (grounded && jump)
+        {
+            grounded = false;
+            v_rigidbody2D.AddForce(new Vector2(0f, jumpforce));
+        }
+    }
+
+    private void Flip()
+    {
+        /* Switch the way the entity is labelled as facing */
+        facingright = !facingright;
+
+        var theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+    [Serializable] public class BoolEvent : UnityEvent<bool>
+    {
+    }
 }

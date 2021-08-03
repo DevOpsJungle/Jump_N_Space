@@ -2,7 +2,7 @@
  * Script: Planet
  * Author: Felix Schneider
  * Last Change: 01.06.21
- * ...I am a description...
+ * Moves the Planet with a parallax effect
  */
 
 using UnityEngine;
@@ -19,26 +19,27 @@ public class Planet : MonoBehaviour
 
     void Awake()
     {
-        Instantiate(planet, Vector3.zero, Quaternion.identity, transform);
         cam_trans = CameraView.GetCamera().transform;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        last_cam_pos = cam_trans.position - GameController.GetStartPos() + pos;
+        Instantiate(planet, Vector3.zero, Quaternion.identity, transform);
+        last_cam_pos = cam_trans.position - GameController.GetStartPos() - pos;
     }
 
     // Update is called once per frame
     void Update()
     {
         Parallax(5.0f);
-        
     }
 
     private void Parallax(float t)
     {
-        new WaitForSeconds(t);
+        new WaitForSeconds(t);      /* parallex starts after 5 sec, because player has to settle on plattform */
+        
+        ScreenViewport.OutBoundary(transform);
         
         Vector3 delta_move = cam_trans.position - last_cam_pos;
         

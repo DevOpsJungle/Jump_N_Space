@@ -1,10 +1,9 @@
 /*
  * Script: PlayerSpwan
  * Author: Felix Schneider
- * Last Change: 24.07.21
+ * Last Change: 01.08.21
  * Handles Spawn and Death of the player
  */
-
 
 
 using UnityEngine;
@@ -15,17 +14,17 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] private GameObject player;
     private GameObject player_instance;
     
-    public float falldeath;     //0 is bottom of start chunk
+    public float falldeath;             /* 0 is bottom of start chunk */
     
-    public EdgeCollider2D deathwall;    //just to visualize
+    public EdgeCollider2D deathwall;    /* just to visualize */
     [SerializeField] private float diff;
     public static float edgedeath;
     private float last_edgedeath;
     
-    private float linear_speed = 0.0125f;
+    private float linear_speed = .015f;
 
 
-    void Awake()
+    private void Awake()
     { 
         player_instance = Instantiate(player,GameController.GetStartPos(), Quaternion.identity, transform);
         deathwall = GetComponentInChildren<EdgeCollider2D>();
@@ -38,7 +37,7 @@ public class PlayerSpawn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edgedeath)
         {
@@ -46,7 +45,7 @@ public class PlayerSpawn : MonoBehaviour
             SceneManager.LoadScene("game.scene");
         }
         
-        //Deathwall
+        /* Deathwall */
         FunktionDeathwall();
         SetDeathwall();
     }
@@ -84,7 +83,7 @@ public class PlayerSpawn : MonoBehaviour
             }
             else
             {
-               i = i + Time.fixedDeltaTime * 0.05f * i;
+               i = i + Time.deltaTime * 0.05f * i;
                return i;
             }
         }

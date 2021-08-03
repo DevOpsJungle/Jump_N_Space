@@ -1,5 +1,5 @@
 /*
- * Script: Help Screen
+ * Script: PauseMenu
  * Author: Johannes Wilhelm, Philip Noack
  * Last Change: 21.06.2021
  * bind ESC, controls status HelpUI and load Help- and Pausemenu
@@ -11,8 +11,9 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    //public GameObject ui;
+    /*public GameObject ui;*/
     public List<GameObject> ui;
+    
     [SerializeField] private GameObject HelpButton;
     [SerializeField] private GameObject HelpUI;
 
@@ -35,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (HelpUI.activeSelf) //check if the HelpUi is active
         {
@@ -88,11 +89,12 @@ public class PauseMenu : MonoBehaviour
         GameController.TimeStop();
     }
 
-    public void HideHelp() //hide Helpbutton if Pausemenu is active
+    private void HideHelp() //hide Helpbutton if Pausemenu is active
     {
         HelpButton.SetActive(false);
     }
-    public void ShowHelp() //show Helpbutton if Pausemenu isn´t active
+
+    private void ShowHelp() //show Helpbutton if Pausemenu isn´t active
     {
         HelpButton.SetActive(true);
     }

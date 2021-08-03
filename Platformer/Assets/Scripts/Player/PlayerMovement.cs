@@ -20,14 +20,8 @@ public class PlayerMovement : MonoBehaviour
         transform = GetComponent<Transform>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
         {

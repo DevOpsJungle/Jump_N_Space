@@ -1,25 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Script: Highscore
+ * Author: Felix Schneider
+ * Last Change: 29.07.21
+ * highscore calculation
+ */
+
+
 using UnityEngine;
 
 public class Highscore : MonoBehaviour
 {
-    public Vector3 start_pos;
-    public Vector3 player_pos;
-    public float highscore;
-    public float distance;
-    public float last_distance;
+    private Vector3 start_pos;
+    private Vector3 player_pos;
     
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float highscore;
+    private float distance;
+    private float last_distance;
+
+
+    private void Awake()
     {
         start_pos = GameController.GetStartPos();
         player_pos = PlayerController.GetPlayerPos();
     }
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        player_pos = PlayerController.GetPlayerPos();
+    }
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         player_pos = PlayerController.GetPlayerPos();
         
@@ -40,6 +52,4 @@ public class Highscore : MonoBehaviour
     {
         return highscore;
     }
-    
-    
 }

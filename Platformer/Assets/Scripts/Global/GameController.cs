@@ -10,11 +10,11 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static bool game_is_paused;
-    
-    public Vector3 start_pos;
+
+    [SerializeField] private Vector3 start_pos;
     private static Vector3 start_pos_s;
 
-    void Awake()
+    private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameController");
         if (objs.Length > 1)

@@ -1,5 +1,5 @@
 /*
- * Script: MainMenu
+ * Script: Menu
  * Author: Philip Noack
  * Last Change: 12.06.21
  * Play and Quit Button in Menu
@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
    public string scenename; /*name of the gamescene*/
-   
    
    public void StartScene()
    {

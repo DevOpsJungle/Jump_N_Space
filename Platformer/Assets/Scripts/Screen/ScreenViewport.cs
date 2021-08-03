@@ -11,18 +11,18 @@ public class ScreenViewport : MonoBehaviour
 {
     [SerializeField] private EdgeCollider2D edge;
     [SerializeField] private Camera cam;     //show private attribute in inspector
-
     
     private Vector3 pos; //Player Position
-
-
+    
     public static float width;       
     public static float hight;
 
-    private static float edgeleft;
-    private static float edgeright;
-    private static float edgetop;
-    private static float edgebottom;
+    public static float left_edge;
+    public static float right_edge;
+    public static float top_edge;
+    public static float bottom_edge;
+    
+    public static float ext_edge;
     
     void Awake()
     {
@@ -38,6 +38,7 @@ public class ScreenViewport : MonoBehaviour
     void Start()
     {
         FindDimensions();
+        ext_edge = 32f;
     }
 
     // Update is called once per frame
@@ -58,19 +59,19 @@ public class ScreenViewport : MonoBehaviour
 
     private void SetEdges()                         //set edges with camera pos --> Camera Viewport defines edges
     {
-        edgeleft = (-width/ 2) + pos.x;
-        edgeright = (width/ 2) + pos.x;
+        left_edge = (-width/ 2) + pos.x;
+        right_edge = (width/ 2) + pos.x;
         
-        edgetop = (hight / 2) + pos.y;
-        edgebottom = (-hight / 2) + pos.y;
+        top_edge = (hight / 2) + pos.y;
+        bottom_edge = (-hight / 2) + pos.y;
     }
     
     private void SetBoundary()                      //with edgepoints boundary can be set
     {
-        Vector2 point_1 = new Vector2(edgeright, edgetop);
-        Vector2 point_2 = new Vector2(edgeright, edgebottom);
-        Vector2 point_3 = new Vector2(edgeleft , edgebottom);
-        Vector2 point_4 = new Vector2(edgeleft, edgetop);
+        Vector2 point_1 = new Vector2(right_edge, top_edge);
+        Vector2 point_2 = new Vector2(right_edge, bottom_edge);
+        Vector2 point_3 = new Vector2(left_edge , bottom_edge);
+        Vector2 point_4 = new Vector2(left_edge, top_edge);
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_3,point_4,point_1};
 
         edge.points = pointArray;
@@ -83,6 +84,23 @@ public class ScreenViewport : MonoBehaviour
     public static float GetHeight()
     {
         return hight;
+    }
+
+
+    public static void OutBoundary(Transform trans)
+    {
+        var pos = trans.position;
+        
+        if (pos.x < left_edge - ext_edge)
+        {
+            pos = new Vector3(right_edge + ext_edge, pos.y, pos.z);
+        }
+                
+        if (pos.x > right_edge + ext_edge) 
+        { 
+            pos = new Vector3(left_edge - ext_edge, pos.y, pos.z);
+        }
+        trans.position = pos;
     }
 }
 

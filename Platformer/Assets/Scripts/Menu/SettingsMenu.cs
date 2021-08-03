@@ -11,17 +11,18 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Linq;
-using UnityEditor;
+
 
 public class SettingsMenu : MonoBehaviour 
 {
     public AudioMixer mixer;
     public Slider slider;
-    public Dropdown resolutionsdropdown;
+    public Dropdown resolutions_dropdown;
+    
     private Resolution mon_resolution;
     private Resolution[] resolutions;
-    public Toggle fullscreenToggle;
-
+    public Toggle fullscreen_toggle;
+    
     private int index = 0;
 
     
@@ -32,21 +33,25 @@ public class SettingsMenu : MonoBehaviour
         mon_resolution = Screen.currentResolution;
         resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray(); /*filter for unique height and width results, before all resolutions were twice (source)*/
         
-        resolutionsdropdown.ClearOptions();
+        resolutions_dropdown.ClearOptions();
         List<string> options = new List<string>(); /*new string for dropdownmenu*/
 
         
+        /* chosen resolution ends up blurry, therefore removal of the feature
+        uncomment the next lines to activate the feature */
+        
+        /* 
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            int aspectratio = resolutions[i].width % resolutions[i].height; /* check if calculated resolution has an aspect ratio from 16:9 (16 mod 9 = 7)*/
+            int aspectratio = resolutions[i].width % resolutions[i].height;         //check if calculated resolution has an aspect ratio from 16:9 (16 mod 9 = 7)
             if (aspectratio % 7 == 0)    
             {
-                string option = resolutions[i].width + "x" + resolutions[i].height; /*add resolutions to dropdownmenu*/
+                string option = resolutions[i].width + "x" + resolutions[i].height; //add resolutions to dropdownmenu
                 options.Add(option);
             }
             
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) /*current display resolution, will be automatically game resolution*/
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) //current display resolution, will be automatically game resolution
             {
                 currentResolutionIndex = i;
             } 
@@ -54,18 +59,20 @@ public class SettingsMenu : MonoBehaviour
         resolutionsdropdown.AddOptions(options);
         resolutionsdropdown.value = currentResolutionIndex;
         resolutionsdropdown.RefreshShownValue();
+        */
         
-        fullscreenToggle.isOn = Screen.fullScreen;
+        
+        fullscreen_toggle.isOn = Screen.fullScreen;
     }
-    
-    
-    public void SetVolume (float sliderValue)
+
+
+    private void SetVolume (float sliderValue)
     {
         mixer.SetFloat("Volume", Mathf.Log10(sliderValue) * 20); /*calculate new volume (log function because the audio mixer value is logarithmic*/
         PlayerPrefs.SetFloat("MusicVolume", sliderValue);  /*save volume settings*/
     }
 
-    public void SetResolution(int resolutionIndex)
+    private void SetResolution(int resolutionIndex)
     {
         index = resolutionIndex;
         
@@ -74,7 +81,8 @@ public class SettingsMenu : MonoBehaviour
         if (Screen.fullScreen == true)
         {
             //Screen.SetResolution(mon_resolution.width, mon_resolution.height,FullScreenMode.Windowed);
-            Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.FullScreenWindow);
+            Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.Windowed);
+            Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.ExclusiveFullScreen);
         }
         else
         {
@@ -82,12 +90,11 @@ public class SettingsMenu : MonoBehaviour
         }
         
         //Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen); /*set chosen resolution and activate fullscreen*/
-        
         /*Screen.SetResolution(2560,1440,FullScreenMode.Windowed);
-        Screen.SetResolution(2560,1440,FullScreenMode.FullScreenWindow);*/
+        Screen.SetResolution(2560,1440,FullScreenMode.ExclusiveFullScreen);*/
     }
 
-    public void SetFullscreen(bool isFullscreen)
+    private void SetFullscreen(bool isFullscreen)
     {
         Resolution resolution = resolutions[index];
         

@@ -1,11 +1,11 @@
 /*
  * Script: Player Controller
  * Author: Vincent Becker
- * Last Change: 30.05.21
- * ...I am a description...
+ * Last Change: 26.07.21
+ * Extension of EntityMovement, Control of player movement
  */
 
-using System;
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     
     private static Vector3 pos;
     public float runspeed = 40f;
-    float horizontalmove = 0f;
-    bool jump = false;
+    private float horizontalmove = 0f;
+    private bool jump = false;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         pos = GetComponent<Transform>().position;
     }
     
-    void Update()
+    private void Update()
     {
         controller.Move(horizontalmove * Time.fixedDeltaTime, jump); 
         jump = false;
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
-        
     }
 
     private void FixedUpdate()
