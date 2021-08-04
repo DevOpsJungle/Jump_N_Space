@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DeathMenu : MonoBehaviour
 {
-    private static int locHighscore;
+    
     [SerializeField] private GameObject helpButton, valueSaved, valueNotSaved, deathCluster;
 
     [SerializeField] private TextMeshPro score;
@@ -17,9 +17,17 @@ public class DeathMenu : MonoBehaviour
 
     private string path;
     private int rank, buttonCheck, fail;
+    private static int locHighscore;
 
     private StreamReader reader;
     private StreamWriter writer;
+
+    private char split;
+
+    private void Awake()
+    {
+        split = '';
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -33,7 +41,7 @@ public class DeathMenu : MonoBehaviour
         {
             using (var init = File.CreateText(path))
             {
-                init.WriteLine("Init");
+                init.WriteLine("Init"+split+"0");
             }
 
             Debug.Log("dataPath : " + path);
@@ -42,7 +50,6 @@ public class DeathMenu : MonoBehaviour
         try
         {
             reader = new StreamReader(path);
-            Debug.Log("dataPath : " + path);
         }
         catch
         {
@@ -61,9 +68,12 @@ public class DeathMenu : MonoBehaviour
             for (var i = 0; i < 10; i++)
             {
                 var currentLine = reader.ReadLine();
+                
                 if (currentLine != null)
                 {
-                    currentSplitLine = currentLine.Split(' ');
+                    currentSplitLine = currentLine.Split(split);
+                    Debug.Log(currentSplitLine[0]);
+                    Debug.Log(currentSplitLine[1]);
                     for (var j = 0; j < 2; j++) HighscoreMenu.HighscoreList(j, i, currentSplitLine[j]);
                 }
             }
@@ -73,7 +83,10 @@ public class DeathMenu : MonoBehaviour
 
             for (var i = 0; i < 10; i++)
                 if (HighscoreMenu.HighscoreList(0, i) == "Init")
+                {
                     i = NewHighscore(i);
+                    buttonCheck = 1;        /* overrides the initial highscore */
+                }
                 else if (locHighscore > int.Parse(HighscoreMenu.HighscoreList(1, i))) i = NewHighscore(i);
         }
     }
@@ -117,7 +130,13 @@ public class DeathMenu : MonoBehaviour
             HighscoreMenu.HighscoreList(0, rank, textBox.text);
             HighscoreMenu.HighscoreList(1, rank, locHighscore.ToString());
             for (var i = 0; i < 10; i++)
-                writer.WriteLine(HighscoreMenu.HighscoreList(0, i) + " " + HighscoreMenu.HighscoreList(1, i));
+            {
+                if(HighscoreMenu.HighscoreList(0,i) != null && HighscoreMenu.HighscoreList(1,i) != null)
+                {
+                    writer.WriteLine(HighscoreMenu.HighscoreList(0, i) + split + HighscoreMenu.HighscoreList(1, i));
+                }
+            }
+                
             writer.Close();
             valueSaved.SetActive(true);
             buttonCheck = 1;
