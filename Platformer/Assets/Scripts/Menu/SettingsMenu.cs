@@ -3,6 +3,9 @@
  * Author: Philip Noack
  * Last Change: 15.06.21
  * Source: https://answers.unity.com/questions/1463609/screenresolutions-returning-duplicates.html
+ *         https://www.youtube.com/watch?v=YOaYQrN1oYQ
+ *         https://www.youtube.com/watch?v=BX8IyTmkiMY
+ *         https://www.youtube.com/watch?v=5onggHOiZaw
  * Volume and Resolution control in OptionsMenu
  */
 

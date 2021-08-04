@@ -1,6 +1,6 @@
 /*
  * Script: PauseMenu
- * Author: Johannes Wilhelm, Philip Noack
+ * Author: Johannes Wilhelm, Philip Noack (PN)
  * Last Change: 21.06.2021
  * bind ESC, controls status HelpUI and load Help- and Pausemenu
  */
@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void Update() //PN
     {
         if (helpUI.activeSelf) //check if the HelpUi is active
         {
@@ -90,12 +90,12 @@ public class PauseMenu : MonoBehaviour
         GameController.TimeStop();
     }
 
-    private void HideHelp() //hide Helpbutton if Pausemenu is active
+    private void HideHelp() //hide Helpbutton if Pausemenu is active PN
     {
         helpButton.SetActive(false);
     }
 
-    private void ShowHelp() //show Helpbutton if Pausemenu isn´t active
+    private void ShowHelp() //show Helpbutton if Pausemenu isn´t active PN
     {
         helpButton.SetActive(true);
     }
