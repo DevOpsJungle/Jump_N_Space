@@ -2,32 +2,32 @@
  * Script: ScreenViewport
  * Author: Felix Schneider
  * Last Change: 10.06.21
- * ...I am a description...
+ * Handles the ScreenViewport for other Objects to be Controlled
  */
 
 using UnityEngine;
 
 public class ScreenViewport : MonoBehaviour
 {
-    [SerializeField] private EdgeCollider2D edge;
-    [SerializeField] private Camera cam;     //show private attribute in inspector
+    [SerializeField] private EdgeCollider2D edge_collider;
+    [SerializeField] private Camera cam;                    /* show private attribute in inspector */
     
-    private Vector3 pos; //Player Position
-    
-    public static float width;       
-    public static float hight;
+    private Vector3 pos;                                    /* will store recent player position */
 
-    public static float left_edge;
-    public static float right_edge;
-    public static float top_edge;
-    public static float bottom_edge;
+    private static float width;
+    private static float hight;
+
+    private static float left_edge;
+    private static float right_edge;
+    private static float top_edge;
+    private static float bottom_edge;
+
+    private static float ext_edge;
     
-    public static float ext_edge;
-    
-    void Awake()
+    // Awake
+    private void Awake()
     {
-        
-        edge = GameObject.Find("Boundary").GetComponent<EdgeCollider2D>();
+        edge_collider = GameObject.Find("Boundary").GetComponent<EdgeCollider2D>();
         cam = CameraView.GetCamera();
         pos = PlayerController.GetPlayerPos();
         
@@ -35,14 +35,14 @@ public class ScreenViewport : MonoBehaviour
     }
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         FindDimensions();
         ext_edge = 32f;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         pos = PlayerController.GetPlayerPos();
 
@@ -74,7 +74,7 @@ public class ScreenViewport : MonoBehaviour
         Vector2 point_4 = new Vector2(left_edge, top_edge);
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_3,point_4,point_1};
 
-        edge.points = pointArray;
+        edge_collider.points = pointArray;
     }
 
     public static float GetWidth()
@@ -87,7 +87,7 @@ public class ScreenViewport : MonoBehaviour
     }
 
 
-    public static void OutBoundary(Transform trans)
+    public static void OutBoundary(Transform trans)     /* sets the given Transform to another position respective to the Viewport */
     {
         var pos = trans.position;
         

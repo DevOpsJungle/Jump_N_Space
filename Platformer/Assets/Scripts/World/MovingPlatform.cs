@@ -6,8 +6,7 @@
  * The script integrates moving platforms into the chunks
  */
 
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour

@@ -2,22 +2,20 @@
  * Script: Camera View
  * Author: Felix Schneider
  * Last Change: 10.06.21
- * ...I am a description...
+ * Sets Camera to the position of the player
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CameraView : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    private static Vector3 camera_pos;  //screenpos => x, y - middle of every Viewport Axis to Worldspace
+    private static Vector3 cam_pos;
 
     private void Awake()
     {
-        cam = GameObject.Find("CameraPlayer").GetComponent<Camera>();
+        cam = GameObject.Find("CameraPlayer").GetComponent<Camera>();   /* Finds the GameObject CameraPlayer with the Component Camera */
     }
 
     // Start is called before the first frame update
@@ -30,7 +28,7 @@ public class CameraView : MonoBehaviour
     // LateUpdate is called after Update
     void Update()
     {
-        SetCamera();
+        SetCamera();        /* Has to be set because player moves every frame */
         GetCameraPos();
     }
 
@@ -38,23 +36,21 @@ public class CameraView : MonoBehaviour
     {
         var player_pos = PlayerController.GetPlayerPos();
         var camera_pos = cam.transform;
-        camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);
+        camera_pos.position = new Vector3(player_pos.x, player_pos.y, camera_pos.position.z);       /* Camera follows Player exactly */
     }
-
-
+    
     private void GetCameraPos()
     {
-        camera_pos = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - cam.transform.position.z));
+        cam_pos = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, - cam.transform.position.z));
     }
-
-
-    public static Camera GetCamera() /*When using GetCamera() in Update you have to use LateUpdate() else you will get the Camera properties of the Last Frame.*/ 
+    
+    public static Camera GetCamera()
     {
         return Camera.main;
     }
     
     public static Vector3 GetScreenPos()
     {
-        return camera_pos;
+        return cam_pos;
     }
 }

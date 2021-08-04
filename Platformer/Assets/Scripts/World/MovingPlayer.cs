@@ -5,9 +5,7 @@
  * The script sets the player as a child of the moving platform so that the platform can move horizontally
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class MovingPlayer : MonoBehaviour
@@ -23,7 +21,6 @@ public class MovingPlayer : MonoBehaviour
             moving = true;
             collision.collider.transform.SetParent(transform);
         }
-            
     }
     
     private void OnCollisionExit2D(Collision2D collision)

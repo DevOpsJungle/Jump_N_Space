@@ -5,8 +5,7 @@
  * This script creates the world at random using predefined chunks
  */
 
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
