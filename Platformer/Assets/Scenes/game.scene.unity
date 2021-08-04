@@ -4035,14 +4035,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203034796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3a0f80e293e944b9d317cea110a9a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e7b2f8f88f73754880bab26538d8588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui:
-  - {fileID: 323969791}
-  - {fileID: 1733447034}
-  bind_to_key: 0
-  key: 0
+  scenename: game.scene
 --- !u!23 &1203034799
 MeshRenderer:
   m_ObjectHideFlags: 0
