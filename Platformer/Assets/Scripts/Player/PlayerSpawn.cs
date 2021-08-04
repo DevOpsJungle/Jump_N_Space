@@ -45,7 +45,6 @@ public class PlayerSpawn : MonoBehaviour
             if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edgedeath)
             {
                 GameController.TimeStop();
-                Destroy(player_instance);
                 death.SetActive(true);
             }
         }

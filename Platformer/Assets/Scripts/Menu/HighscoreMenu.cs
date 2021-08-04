@@ -21,9 +21,7 @@ public class HighscoreMenu : MonoBehaviour
 
     public static string HighscoreList(int x, int y)
     {
-        Debug.Log(x);
-        Debug.Log(y);
-        return highscoreList[x,y+1];
+        return highscoreList[x,y];
     } 
     public static void HighscoreList(int x, int y, string b)
     {
