@@ -26,6 +26,7 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Awake()
     { 
+        GameController.TimeStart();
         player_instance = Instantiate(player,GameController.GetStartPos(), Quaternion.identity, transform);
         deathwall = GetComponentInChildren<EdgeCollider2D>();
     }

@@ -1,30 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DeathMenu : MonoBehaviour
 {
-    [SerializeField] TextMeshPro score;
-    [SerializeField] private TextMeshProUGUI valueNotSavedText;
     private static int locHighscore;
-    [SerializeField] GameObject helpButton, valueSaved, valueNotSaved, deathCluster;
+    [SerializeField] private GameObject helpButton, valueSaved, valueNotSaved, deathCluster;
+
+    [SerializeField] private TextMeshPro score;
+
     [SerializeField] private TextMeshProUGUI textBox;
+    [SerializeField] private TextMeshProUGUI valueNotSavedText;
+
+    private string[] currentSplitLine;
+
+    private string path;
+    private int rank, buttonCheck, fail;
+
     private StreamReader reader;
     private StreamWriter writer;
-    private string[] currentSplitLine;
-    private int rank, buttonCheck, fail;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         buttonCheck = 0;
         valueNotSavedText.text = "Value not saved!";
+
+        path = @"highscore.txt";
+
+        if (!File.Exists(path))
+        {
+            using (var init = File.CreateText(path))
+            {
+                init.WriteLine("Init");
+            }
+
+            Debug.Log("dataPath : " + path);
+        }
+        
         try
         {
-            reader = new StreamReader(@"highscore.txt");
+            reader = new StreamReader(path);
+            Debug.Log("dataPath : " + path);
         }
         catch
         {
@@ -32,43 +50,40 @@ public class DeathMenu : MonoBehaviour
             valueNotSavedText.text = "No highscore file accessible!";
             valueNotSaved.SetActive(true);
         }
+
+
         helpButton.SetActive(false);
         locHighscore = Convert.ToInt32(Highscore.GetHighscore());
-        score.text = "Score: "+locHighscore;
+        score.text = "Score: " + locHighscore;
+
         if (fail != 1)
         {
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
-                string currentLine = reader.ReadLine();
-                currentSplitLine = currentLine.Split(' ');
-                for (int j=0; j < 2; j++)
+                var currentLine = reader.ReadLine();
+                if (currentLine != null)
                 {
-                    HighscoreMenu.HighscoreList(j, i, currentSplitLine[j]);
+                    currentSplitLine = currentLine.Split(' ');
+                    for (var j = 0; j < 2; j++) HighscoreMenu.HighscoreList(j, i, currentSplitLine[j]);
                 }
             }
+
             reader.Close();
-            
-            for (int i = 0; i < 10; i++)
-            {
-                if ((HighscoreMenu.HighscoreList(0, i)=="Init"))
-                {
+
+
+            for (var i = 0; i < 10; i++)
+                if (HighscoreMenu.HighscoreList(0, i) == "Init")
                     i = NewHighscore(i);
-                }
-                else if (locHighscore > Int32.Parse(HighscoreMenu.HighscoreList(1, i)))
-                {
-                    i = NewHighscore(i);
-                }
-            }
+                else if (locHighscore > int.Parse(HighscoreMenu.HighscoreList(1, i))) i = NewHighscore(i);
         }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
-    int NewHighscore(int i)
+    private int NewHighscore(int i)
     {
         deathCluster.SetActive(true);
         rank = i;
@@ -78,14 +93,14 @@ public class DeathMenu : MonoBehaviour
 
     public void SubmitHighscore()
     {
-        int fail=0;
+        var fail = 0;
         try
         {
-            writer = new StreamWriter(@"highscore.txt", false);
+            writer = new StreamWriter(path, false);
         }
         catch
         {
-            fail = 1; 
+            fail = 1;
             valueNotSavedText.text = "No highscore file accessible!";
             valueNotSaved.SetActive(true);
         }
@@ -93,19 +108,16 @@ public class DeathMenu : MonoBehaviour
         if (fail == 0)
         {
             if (buttonCheck == 0)
-            {
-                for (int i = 8; i >= rank; i--)
+                for (var i = 8; i >= rank; i--)
                 {
                     HighscoreMenu.HighscoreList(0, i + 1, HighscoreMenu.HighscoreList(0, i));
                     HighscoreMenu.HighscoreList(1, i + 1, HighscoreMenu.HighscoreList(1, i));
                 }
-            }
+
             HighscoreMenu.HighscoreList(0, rank, textBox.text);
             HighscoreMenu.HighscoreList(1, rank, locHighscore.ToString());
-            for (int i = 0; i < 10; i++)
-            {
-                writer.WriteLine(HighscoreMenu.HighscoreList(0,i)+" "+HighscoreMenu.HighscoreList(1,i)); 
-            }
+            for (var i = 0; i < 10; i++)
+                writer.WriteLine(HighscoreMenu.HighscoreList(0, i) + " " + HighscoreMenu.HighscoreList(1, i));
             writer.Close();
             valueSaved.SetActive(true);
             buttonCheck = 1;

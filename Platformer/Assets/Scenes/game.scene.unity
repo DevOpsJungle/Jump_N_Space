@@ -5502,13 +5502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea85be837ec4f547ac319301a50bed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 535862020}
-  valueNotSavedText: {fileID: 363413223}
   helpButton: {fileID: 148645713}
   valueSaved: {fileID: 1180184756}
   valueNotSaved: {fileID: 363413221}
   deathCluster: {fileID: 1761416254}
+  score: {fileID: 535862020}
   textBox: {fileID: 1441902517}
+  valueNotSavedText: {fileID: 363413223}
 --- !u!114 &1718024071
 MonoBehaviour:
   m_ObjectHideFlags: 0
