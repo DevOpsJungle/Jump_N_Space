@@ -16,33 +16,32 @@ public class Rocket : MonoBehaviour
     
     private Rigidbody r_rigidbody;
     public Camera cam;
-    
-    private float movingspeed = 10.0f;
-    private int currentstate,direction_dec;
     public Sprite[] rocket = new Sprite[4];  /*array with all used images*/
     
+    private float movingspeed = 10.0f;
+    private float border;
+    private int currentstate,direction_dec;
+    
+    
 
-    private void Awake()
+    void Awake()
     {
         cam = CameraView.GetCamera();
-        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigitbody*/
+        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigidbody*/
         Time.timeScale = 1.0f;
     }
-    
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     { 
-        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigitbody*/
-        ResetValues();
+        r_rigidbody = GetComponent<Rigidbody>(); /*assign rigidbody*/
+        reset_values();
         direction_dec = 0;
     }
     
     // Update is called once per frame
  
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        //Debug.Log(cam.WorldToScreenPoint(r_rigidbody.position));
-        
         r_rigidbody.velocity = direction * movingspeed; /*set velocity*/
         if (currentstate != 0 && currentstate%20==0) /*animation change every 20 frames*/
         {
@@ -57,32 +56,55 @@ public class Rocket : MonoBehaviour
         {
             currentstate++;
         }
-        
-        if (r_rigidbody.position.y > cam.ScreenToWorldPoint(new Vector3(0,1080,0)).y)
+        /*if (r_rigidbody.position.y > border direction_dec == 2 ^ direction_dec == 0)
         {
-            ResetValues();
+          Debug.Log(true);  
+        }*/
+        
+        if (r_rigidbody.position.y > border & direction_dec < 2 ^ r_rigidbody.position.y < border & direction_dec >=2)
+        {
+            reset_values();
             
             if (direction_dec == 0)
             {
                 direction.x = -direction.x;
                 startposition.x = -startposition.x;
-                
+                gameObject.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, -90);
                 direction_dec++;
             }
-            else if (direction_dec!=0)
+            
+            else if (direction_dec == 1)
+            {
+                direction = new Vector3(-direction.x, -direction.y, 0);
+                startposition = new Vector3(-startposition.x, -startposition.y, 0);
+                gameObject.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, -180);
+                border = -border;
+                direction_dec++;
+            }
+            
+            else if (direction_dec == 2)
+            {
+                direction.y = -direction.y;
+                startposition.y = -startposition.y;
+                gameObject.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, 90);
+                border = -border;
+                direction_dec++;
+            }
+
+            else
             {
                 direction_dec = 0;
+                gameObject.GetComponent<Image>().rectTransform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            Debug.Log(startposition);
-            
+
             gameObject.GetComponent<Image>().rectTransform.anchoredPosition3D = startposition; /*reset image*/
-            //Debug.Log(cam.WorldToScreenPoint(r_rigidbody.position));
         }
     }
 
-    private void ResetValues()
+    void reset_values()
     {
-        startposition = (new Vector3(960f, -460f, 0));
+        startposition = (new Vector3(1200f, -660f, 0));
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
+        border=cam.ScreenToWorldPoint(new Vector3(0,1080,0)).y;
     }
 }

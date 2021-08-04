@@ -13,7 +13,7 @@ public class Highscore : MonoBehaviour
     private Vector3 start_pos;
     private Vector3 player_pos;
     
-    [SerializeField] private float highscore;
+    [SerializeField] private static float highscore;
     private float distance;
     private float last_distance;
 
@@ -48,7 +48,7 @@ public class Highscore : MonoBehaviour
         }
     }
     
-    public float GetHighscore()
+    public static float GetHighscore()
     {
         return highscore;
     }
