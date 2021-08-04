@@ -14,19 +14,19 @@ public class DeathMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valueNotSavedText;
 
     private string[] currentSplitLine;
-
-    private string path;
+    
     private int rank, buttonCheck, fail;
     private static int locHighscore;
 
     private StreamReader reader;
     private StreamWriter writer;
-
-    private char split;
+    
+    private string path=HighscoreMenu.path;
+    private char split=HighscoreMenu.split;
 
     private void Awake()
     {
-        split = '';
+        
     }
 
     // Start is called before the first frame update
@@ -75,9 +75,16 @@ public class DeathMenu : MonoBehaviour
                 if (currentLine != null)
                 {
                     currentSplitLine = currentLine.Split(split);
-                    Debug.Log(currentSplitLine[0]);
-                    Debug.Log(currentSplitLine[1]);
-                    for (var j = 0; j < 2; j++) HighscoreMenu.HighscoreList(j, i, currentSplitLine[j]);
+                    try
+                    {
+                        for (var j = 0; j < 2; j++) HighscoreMenu.HighscoreList(j, i, currentSplitLine[j]);
+                    }
+                    catch
+                    {
+                        valueNotSavedText.text = "Highscore file corrupt!";
+                        valueNotSaved.SetActive(true);
+                        fail = 1;
+                    }
                 }
             }
 
