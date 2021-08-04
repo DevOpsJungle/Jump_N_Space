@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -17,6 +16,7 @@ public class HighscoreMenu : MonoBehaviour
     public static char split= '';
     public static string path;
     private string[] currentSplitLine;
+    private int empty=0;
 
 
     private StreamReader reader;
@@ -84,6 +84,16 @@ public class HighscoreMenu : MonoBehaviour
                 {
                     textList[i].text = (i+1)+".  "+HighscoreList(0, i) + "    " + HighscoreList(1, i);
                 }
+                else
+                {
+                    empty++;
+                }
+            }
+
+            if (empty == 10)
+            {
+                errorText.text = "No Highscores Yet, Play to Fill!";
+                error.SetActive(true);
             }
         }
     }

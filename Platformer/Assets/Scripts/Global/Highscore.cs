@@ -17,7 +17,6 @@ public class Highscore : MonoBehaviour
     private float distance;
     private float last_distance;
 
-
     private void Awake()
     {
         start_pos = GameController.GetStartPos();
@@ -40,7 +39,7 @@ public class Highscore : MonoBehaviour
             last_distance = distance;
         }
         
-        distance = Vector3.Distance(new Vector3(0, player_pos.x, 0), new Vector3(0, start_pos.x, 0));
+        distance = Vector3.Distance(new Vector3(player_pos.x,0 ,0), Vector3.zero);
         
         if (distance > last_distance)
         {

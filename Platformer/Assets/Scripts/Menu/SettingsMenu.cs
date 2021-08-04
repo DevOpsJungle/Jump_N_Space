@@ -33,9 +33,9 @@ public class SettingsMenu : MonoBehaviour
         mon_resolution = Screen.currentResolution;
         resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray(); /*filter for unique height and width results, before all resolutions were twice (source)*/
         
-        /* chosen resolution ends up blurry, therefore removal of the feature
-                uncomment the next lines to activate the feature */
-        /* 
+        
+        /* chosen resolution ends up blurry, therefore removal of the feature, uncomment the next lines to activate the feature */
+        /*
         resolutions_dropdown.ClearOptions();
         List<string> options = new List<string>();                  //new string for dropdownmenu
 
@@ -54,13 +54,12 @@ public class SettingsMenu : MonoBehaviour
                 currentResolutionIndex = i;
             } 
         }
-        resolutionsdropdown.AddOptions(options);
-        resolutionsdropdown.value = currentResolutionIndex;
-        resolutionsdropdown.RefreshShownValue();
-        */
-        
+        resolutions_dropdown.AddOptions(options);
+        resolutions_dropdown.value = currentResolutionIndex;
+        resolutions_dropdown.RefreshShownValue();
         
         fullscreen_toggle.isOn = Screen.fullScreen;
+        */
     }
 
 
@@ -78,7 +77,6 @@ public class SettingsMenu : MonoBehaviour
 
         if (Screen.fullScreen == true)
         {
-            //Screen.SetResolution(mon_resolution.width, mon_resolution.height,FullScreenMode.Windowed);
             Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.Windowed);
             Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.ExclusiveFullScreen);
         }
@@ -86,17 +84,13 @@ public class SettingsMenu : MonoBehaviour
         {
             Screen.SetResolution(resolution.width,resolution.height,FullScreenMode.Windowed);
         }
-        
-        //Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen); /*set chosen resolution and activate fullscreen*/
-        /*Screen.SetResolution(2560,1440,FullScreenMode.Windowed);
-        Screen.SetResolution(2560,1440,FullScreenMode.ExclusiveFullScreen);*/
     }
 
     private void SetFullscreen(bool isFullscreen)
     {
         Resolution resolution = resolutions[index];
         
-        if (isFullscreen == true)
+        if (isFullscreen)
         {
             Screen.SetResolution(mon_resolution.width, mon_resolution.height,FullScreenMode.FullScreenWindow);
         }
@@ -104,7 +98,5 @@ public class SettingsMenu : MonoBehaviour
         {
             Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.Windowed);
         }
-        
-        //Screen.fullScreen = isFullscreen;
     }
 } 

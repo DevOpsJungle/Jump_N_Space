@@ -103,8 +103,8 @@ public class Rocket : MonoBehaviour
 
     void reset_values()
     {
-        startposition = (new Vector3(1200f, -660f, 0));
+        startposition = (new Vector3(1440f, -1080f, 0));
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/
-        border=cam.ScreenToWorldPoint(new Vector3(0,1080,0)).y;
+        border=cam.ScreenToWorldPoint(new Vector3(0,2160,0)).y;
     }
 }
