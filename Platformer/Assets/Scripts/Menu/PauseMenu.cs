@@ -14,8 +14,8 @@ public class PauseMenu : MonoBehaviour
     /*public GameObject ui;*/
     public List<GameObject> ui;
     
-    [SerializeField] private GameObject HelpButton;
-    [SerializeField] private GameObject HelpUI;
+    [SerializeField] private GameObject helpButton;
+    [SerializeField] private GameObject helpUI;
 
     public bool bind_to_key;
     public KeyCode key;
@@ -23,8 +23,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        HelpButton = GameObject.FindWithTag("HelpButton");
-        HelpUI = GameObject.FindWithTag("HelpUI");
+        helpButton = GameObject.FindWithTag("HelpButton");
+        helpUI = GameObject.FindWithTag("HelpUI");
     }
 
     private void Start()
@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (HelpUI.activeSelf) //check if the HelpUi is active
+        if (helpUI.activeSelf) //check if the HelpUi is active
         {
             bind_to_key = false; //ESC will ignore
         }
@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
         {
             bind_to_key = true; //ESC can be used normally
         }
+        
         if (bind_to_key == true)
         {
             KeyBind();
@@ -91,12 +92,12 @@ public class PauseMenu : MonoBehaviour
 
     private void HideHelp() //hide Helpbutton if Pausemenu is active
     {
-        HelpButton.SetActive(false);
+        helpButton.SetActive(false);
     }
 
     private void ShowHelp() //show Helpbutton if Pausemenu isn´t active
     {
-        HelpButton.SetActive(true);
+        helpButton.SetActive(true);
     }
 }
 

@@ -33,14 +33,12 @@ public class SettingsMenu : MonoBehaviour
         mon_resolution = Screen.currentResolution;
         resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray(); /*filter for unique height and width results, before all resolutions were twice (source)*/
         
-        resolutions_dropdown.ClearOptions();
-        List<string> options = new List<string>(); /*new string for dropdownmenu*/
-
-        
         /* chosen resolution ends up blurry, therefore removal of the feature
-        uncomment the next lines to activate the feature */
-        
+                uncomment the next lines to activate the feature */
         /* 
+        resolutions_dropdown.ClearOptions();
+        List<string> options = new List<string>();                  //new string for dropdownmenu
+
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
