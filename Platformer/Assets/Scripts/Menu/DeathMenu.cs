@@ -41,7 +41,10 @@ public class DeathMenu : MonoBehaviour
         {
             using (var init = File.CreateText(path))
             {
-                init.WriteLine("Init"+split+"0");
+                for (var i = 0; i < 10; i++)
+                {
+                    init.WriteLine("Init"+split+"0");
+                }
             }
 
             Debug.Log("dataPath : " + path);
