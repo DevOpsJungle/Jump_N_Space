@@ -15,7 +15,8 @@ using Random = UnityEngine.Random;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private Transform chunk_start;
-    [SerializeField] private List <Transform> chunk_list;
+    [SerializeField] private List <Transform> chunk_list;       /* Chunks are prefabs and are initialised via the Unity Inspector */
+    
     [Range(0, 10f)] [SerializeField] private int start_chunks;
     [Range(0, 500f)] [SerializeField] private int chunk_visibility;
     
