@@ -2919,6 +2919,7 @@ MonoBehaviour:
   falldeath: -10
   deathwall: {fileID: 0}
   diff: 0
+  linear_speed: 0
 --- !u!114 &571388704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5669,7 +5670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad00f428e0f9eec408a0cd169733296f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edge: {fileID: 0}
+  edge_collider: {fileID: 0}
   cam: {fileID: 0}
 --- !u!114 &1760760995
 MonoBehaviour:
@@ -5872,7 +5873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40578e7eb6b174246861ab2be7f81bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 1805046614545020401, guid: c448f417e1637a949ac0957044fa7ae9, type: 3}
+  planet: {fileID: 5724874521289038548, guid: 21b7cd135ede14946bde4bff29cfefc0, type: 3}
   pos: {x: 10.77, y: 5.3, z: 0}
   parallax: 0.75
 --- !u!1 &1853263974
