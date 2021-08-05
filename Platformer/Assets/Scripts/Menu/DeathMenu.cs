@@ -6,6 +6,7 @@ using UnityEngine;
 public class DeathMenu : MonoBehaviour
 {
     
+
     [SerializeField] private GameObject helpButton, valueSaved, valueNotSaved, deathCluster;
 
     [SerializeField] private TextMeshPro score;
@@ -14,42 +15,37 @@ public class DeathMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valueNotSavedText;
 
     private string[] currentSplitLine;
-    
-    private int rank, buttonCheck, fail;
-    private static int locHighscore;
 
+    private string path = HighscoreMenu.path;
+
+    private int rank, buttonCheck, fail;
+    private static int loc_highscore;
+    
     private StreamReader reader;
     private StreamWriter writer;
     
-    private string path=HighscoreMenu.path;
-    private char split=HighscoreMenu.split;
+    private readonly char split = HighscoreMenu.split;
 
     private void Awake()
     {
-        
+        buttonCheck = 0;
+        valueNotSavedText.text = "Value not saved!";
+        path = @"highscore.txt";
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        buttonCheck = 0;
-        valueNotSavedText.text = "Value not saved!";
-
-        path = @"highscore.txt";
-
         if (!File.Exists(path))
         {
             using (var init = File.CreateText(path))
             {
-                for (var i = 0; i < 10; i++)
-                {
-                    init.WriteLine("Init"+split+"0");
-                }
+                for (var i = 0; i < 10; i++) init.WriteLine("Init" + split + "0");
             }
 
             Debug.Log("dataPath : " + path);
         }
-        
+
         try
         {
             reader = new StreamReader(path);
@@ -62,16 +58,19 @@ public class DeathMenu : MonoBehaviour
         }
 
 
+        
         helpButton.SetActive(false);
-        locHighscore = Convert.ToInt32(Highscore.GetHighscore());
-        score.text = "Score: " + locHighscore;
+        loc_highscore = Convert.ToInt32(Highscore.GetHighscore());
+        score.text = "Score: " + loc_highscore;
 
+        
+        
         if (fail != 1)
         {
             for (var i = 0; i < 10; i++)
             {
                 var currentLine = reader.ReadLine();
-                
+
                 if (currentLine != null)
                 {
                     currentSplitLine = currentLine.Split(split);
@@ -87,24 +86,23 @@ public class DeathMenu : MonoBehaviour
                     }
                 }
             }
-
             reader.Close();
 
+            
 
             for (var i = 0; i < 10; i++)
                 if (HighscoreMenu.HighscoreList(0, i) == "Init")
                 {
                     i = NewHighscore(i);
-                    buttonCheck = 1;        /* overrides the initial highscore */
+                    buttonCheck = 1; /* overrides the initial highscore */
                 }
-                else if (locHighscore > int.Parse(HighscoreMenu.HighscoreList(1, i))) i = NewHighscore(i);
+                else if (loc_highscore > int.Parse(HighscoreMenu.HighscoreList(1, i)))
+                {
+                    i = NewHighscore(i);
+                }
         }
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
+    
 
     private int NewHighscore(int i)
     {
@@ -128,6 +126,8 @@ public class DeathMenu : MonoBehaviour
             valueNotSaved.SetActive(true);
         }
 
+        
+        
         if (fail == 0)
         {
             if (buttonCheck == 0)
@@ -138,15 +138,15 @@ public class DeathMenu : MonoBehaviour
                 }
 
             HighscoreMenu.HighscoreList(0, rank, textBox.text);
-            HighscoreMenu.HighscoreList(1, rank, locHighscore.ToString());
+            HighscoreMenu.HighscoreList(1, rank, loc_highscore.ToString());
             for (var i = 0; i < 10; i++)
             {
-                if(HighscoreMenu.HighscoreList(0,i) != null && HighscoreMenu.HighscoreList(1,i) != null)
-                {
+                if (HighscoreMenu.HighscoreList(0, i) != null && HighscoreMenu.HighscoreList(1, i) != null)
+                { 
                     writer.WriteLine(HighscoreMenu.HighscoreList(0, i) + split + HighscoreMenu.HighscoreList(1, i));
                 }
             }
-                
+            
             writer.Close();
             valueSaved.SetActive(true);
             buttonCheck = 1;

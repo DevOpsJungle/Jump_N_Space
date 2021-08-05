@@ -17,11 +17,13 @@ public class PlayerSpawn : MonoBehaviour
     public float falldeath;             /* 0 is bottom of start chunk */
     
     public EdgeCollider2D deathwall;    /* just to visualize */
-    [SerializeField] private float diff;
-    public static float edgedeath;
-    private float last_edgedeath;
     
-    private float linear_speed = .015f;
+    [SerializeField] private float diff;
+    public static float edge_death;
+    private float last_edge_death;
+
+    [SerializeField] private float linear_speed;
+    private static float lerp_speed = 1f;
 
 
     private void Awake()
@@ -29,12 +31,14 @@ public class PlayerSpawn : MonoBehaviour
         GameController.TimeStart();
         player_instance = Instantiate(player,GameController.GetStartPos(), Quaternion.identity, transform);
         deathwall = GetComponentInChildren<EdgeCollider2D>();
+
+        
     }
     
     // Start is called before the first frame update
     private void Start()
     {
-        edgedeath = 0.1f;
+        edge_death = 0.1f;
     }
 
     // Update is called once per frame
@@ -42,7 +46,7 @@ public class PlayerSpawn : MonoBehaviour
     {
         if (!GameController.game_is_paused)
         {
-            if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edgedeath)
+            if (player_instance.transform.position.y < falldeath || player_instance.transform.position.x < edge_death)
             {
                 GameController.TimeStop();
                 death.SetActive(true);
@@ -51,14 +55,15 @@ public class PlayerSpawn : MonoBehaviour
         
         
         //Deathwall
+        linear_speed = 3f * Time.deltaTime;
         FunktionDeathwall();
         SetDeathwall();
     }
 
     private void SetDeathwall()
     {
-        Vector2 point_1 = new Vector2(edgedeath, 100);
-        Vector2 point_2 = new Vector2(edgedeath, -100);
+        Vector2 point_1 = new Vector2(edge_death, 100);
+        Vector2 point_2 = new Vector2(edge_death, -100);
                 
         Vector2 [] pointArray = new Vector2[] {point_1,point_2,point_1};
         
@@ -67,30 +72,20 @@ public class PlayerSpawn : MonoBehaviour
 
     private void FunktionDeathwall()
     {
-        if (diff < linear_speed)
+        edge_death = edge_death + linear_speed;
+        
+        if (PlayerController.GetPlayerPos().x - edge_death > 24f)       /* Deathwall has a rubberband effect stays tries to not let the player advance more than 24f before the Dathwall */
         {
-            last_edgedeath = edgedeath;
-            edgedeath = Exponential(edgedeath);
-            diff = edgedeath - last_edgedeath;
+            edge_death = Lerp(edge_death, PlayerController.GetPlayerPos().x - 24f);
+            Debug.Log("Lerp");
         }
-        else
-        {
-            edgedeath = edgedeath + linear_speed;
-            diff = linear_speed;
-        }
+        
     }
-    private float Exponential(float i)
+
+    public static float Lerp(float last_pos, float pos)        /* lets the octopus trail behind the player on one axis */
     {
-        {
-            if (GameController.game_is_paused)
-            {
-                return i;
-            }
-            else
-            {
-               i = i + Time.deltaTime * 0.05f * i;
-               return i;
-            }
-        }
+        float value;
+        value = Mathf.Lerp(last_pos, pos, Time.deltaTime * lerp_speed);
+        return value;
     }
 }

@@ -13,7 +13,7 @@ public class Highscore : MonoBehaviour
     private Vector3 start_pos;
     private Vector3 player_pos;
     
-    [SerializeField] private static float highscore;
+    private static float highscore;
     private float distance;
     private float last_distance;
 
@@ -39,8 +39,9 @@ public class Highscore : MonoBehaviour
             last_distance = distance;
         }
         
-        distance = Vector3.Distance(new Vector3(player_pos.x,0 ,0), Vector3.zero);
-        
+        //distance = Vector3.Distance(new Vector3(player_pos.x,0 ,0), Vector3.zero);
+        distance = PlayerController.GetPlayerPos().x;
+
         if (distance > last_distance)
         {
             highscore = distance;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -9,25 +10,29 @@ public class HighscoreMenu : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> textList;
     [SerializeField] private GameObject error;
     [SerializeField] private TextMeshProUGUI errorText;
-    
-    public static string[,] highscoreList = new string[2,10];
-    
-    public static char split= '';
-    public static string path;
-    private string[] currentSplitLine;
-    private int empty=0;
 
+    private static string[,] highscoreList = new string[2,10];
+    
+    private string[] currentSplitLine;
+    private int empty = 0;
+    
+    public static char split = '';
+    public static string path;
 
     private StreamReader reader;
     private StreamWriter writer;
 
     private int fail = 0;
-    // Start is called before the first frame update
     
-    void Start()
+    
+    private void Awake()
     {
         path = @"highscore.txt";
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         if (!File.Exists(path))
         {
             using (var init = File.CreateText(path))
@@ -52,6 +57,8 @@ public class HighscoreMenu : MonoBehaviour
             error.SetActive(true);
         }
 
+        
+        
         if (fail != 1)
         {
             for (var i = 0; i < 10; i++)
@@ -96,12 +103,7 @@ public class HighscoreMenu : MonoBehaviour
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-   
-    }
+    
 
     public static string HighscoreList(int x, int y)
     {

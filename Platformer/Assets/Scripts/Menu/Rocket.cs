@@ -34,7 +34,7 @@ public class Rocket : MonoBehaviour
     void Start()
     { 
         r_rigidbody = GetComponent<Rigidbody>(); /*assign rigidbody*/
-        reset_values();
+        ResetValues();
         direction_dec = 0;
     }
     
@@ -63,7 +63,7 @@ public class Rocket : MonoBehaviour
         
         if (r_rigidbody.position.y > border & direction_dec < 2 ^ r_rigidbody.position.y < border & direction_dec >=2)
         {
-            reset_values();
+            ResetValues();
             
             if (direction_dec == 0)
             {
@@ -101,7 +101,7 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    void reset_values()
+    void ResetValues()
     {
         startposition = (new Vector3(1440f, -1080f, 0));
         direction = new Vector3(-1.0f, 1.0f, 0.0f); /*set direction*/

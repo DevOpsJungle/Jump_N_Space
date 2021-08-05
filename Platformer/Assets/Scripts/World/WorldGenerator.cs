@@ -1,5 +1,5 @@
 /*
- * Script: World Generator
+ * Script: WorldGenerator
  * Author: Felix Schneider, Vincent Becker
  * Last Change: 14.06.21
  * This script creates the world at random using predefined chunks
@@ -18,11 +18,11 @@ public class WorldGenerator : MonoBehaviour
     [Range(0, 500f)] [SerializeField] private int chunk_visibility;
     
     private Vector3 pos;
-    private Vector3 last_end_position;
+    private Vector3 last_end_pos;
     
     private void Awake()
     {
-        last_end_position = chunk_start.Find("EndPosition").GetComponent<Transform>().position;
+        last_end_pos = chunk_start.Find("EndPosition").GetComponent<Transform>().position;
     }
 
     private void Start()
@@ -40,7 +40,7 @@ public class WorldGenerator : MonoBehaviour
     {
         pos = PlayerController.GetPlayerPos();
         
-        if (Vector3.Distance( pos, last_end_position) < ScreenViewport.GetWidth()/2 + chunk_visibility)
+        if (Vector3.Distance( pos, last_end_pos) < ScreenViewport.GetWidth()/2 + chunk_visibility)
         {
             PlaceChunk();
         }
@@ -49,13 +49,13 @@ public class WorldGenerator : MonoBehaviour
     private void PlaceChunk()
     {
         Transform chosenchunk = chunk_list[Random.Range(0, chunk_list.Count)];
-        Transform lastchunktransform = PlaceChunk(chosenchunk, last_end_position);
-        last_end_position = lastchunktransform.Find("EndPosition").position;
+        Transform lastchunktransform = PlaceChunk(chosenchunk, last_end_pos);
+        last_end_pos = lastchunktransform.Find("EndPosition").position;
     }
 
-    private Transform PlaceChunk(Transform chunkpart, Vector3 spawnposition)
+    private Transform PlaceChunk(Transform chunk_part, Vector3 spawn_pos)
     {
-        Transform chunktransform = Instantiate(chunkpart, spawnposition, Quaternion.identity, transform.parent);
+        Transform chunktransform = Instantiate(chunk_part, spawn_pos, Quaternion.identity, transform.parent);
         return chunktransform;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Script: Moving Platform
+ * Script: MovingPlatform
  * Author: Vincent Becker
  * Source: https://answers.unity.com/questions/1784956/how-to-move-platform-up-and-down-even-if-player-st.html
  * Last Change: 25.07.21

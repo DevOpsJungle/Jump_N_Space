@@ -14,12 +14,10 @@ public class Octopus : MonoBehaviour
     private GameObject octopus_instance;
 
     private Vector3 pos;
-    private float lerp_speed = 1f;
 
     private void Awake()
     {
-        pos = new Vector3(PlayerSpawn.edgedeath, GameController.GetStartPos().y, GameController.GetStartPos().z);       /* position dependent on StartPos and Deathwall */
-        
+        pos = new Vector3(PlayerSpawn.edge_death, GameController.GetStartPos().y, GameController.GetStartPos().z);       /* position dependent on StartPos and Deathwall */
     }
 
     // Start is called before the first frame update
@@ -31,13 +29,8 @@ public class Octopus : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        octopus_instance.transform.position = new Vector3(PlayerSpawn.edgedeath, Lerp(octopus_instance.transform.position ,PlayerController.GetPlayerPos()), pos.z * Time.deltaTime);
+        octopus_instance.transform.position = new Vector3(PlayerSpawn.edge_death, PlayerSpawn.Lerp(octopus_instance.transform.position.y ,PlayerController.GetPlayerPos().y), 0);
     }
 
-    private float Lerp(Vector3 last, Vector3 player_pos)        /* lets the octopus trail behind the player on the y axis */
-    {
-        float value;
-        value = Mathf.Lerp(last.y, player_pos.y, Time.deltaTime * lerp_speed);
-        return value;
-    }
+    
 }

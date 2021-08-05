@@ -60,9 +60,9 @@ public class SettingsMenu : MonoBehaviour
         resolutions_dropdown.AddOptions(options);
         resolutions_dropdown.value = currentResolutionIndex;
         resolutions_dropdown.RefreshShownValue();
-        
-        fullscreen_toggle.isOn = Screen.fullScreen;
         */
+        fullscreen_toggle.isOn = Screen.fullScreen;     /* set the Fullscreen Tooglto the right setting when starting */
+        
     }
 
 

@@ -1,5 +1,5 @@
 /*
- * Script: Moving Player
+ * Script: MovingPlayer
  * Author: Vincent Becker
  * Last Change: 01.08.21
  * The script sets the player as a child of the moving platform so that the platform can move horizontally
