@@ -8,34 +8,37 @@
 
 using UnityEngine;
 
-public class MovingPlayer : MonoBehaviour
+namespace World
 {
-    [SerializeField] 
-    private Vector3 velocity;
-    private bool moving;
+    public class MovingPlayer : MonoBehaviour
+    {
+        [SerializeField] 
+        private Vector3 velocity;
+        private bool moving;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            moving = true;
-            collision.collider.transform.SetParent(transform);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                moving = true;
+                collision.collider.transform.SetParent(transform);
+            }
         }
-    }
     
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            collision.collider.transform.SetParent(null);
-        }
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.collider.transform.SetParent(null);
+            }
             
-    }
-    void FixedUpdate()
-    {
-        if (moving)
+        }
+        void FixedUpdate()
         {
-            transform.position += (velocity * Time.deltaTime);
+            if (moving)
+            {
+                transform.position += (velocity * Time.deltaTime);
+            }
         }
     }
 }

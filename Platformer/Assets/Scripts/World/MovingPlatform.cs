@@ -9,30 +9,33 @@
 
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+namespace World
 {
-    [SerializeField] private Transform targetA, targetB; 
-    [Range(0, .1f)] [SerializeField] private float speed;
-    private bool switching = false;
-    
-    private void FixedUpdate()
+    public class MovingPlatform : MonoBehaviour
     {
-        if (!switching)
+        [SerializeField] private Transform targetA, targetB; 
+        [Range(0, .1f)] [SerializeField] private float speed;
+        private bool switching = false;
+    
+        private void FixedUpdate()
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetA.position, speed); 
-        }
-        else if (switching)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetB.position, speed); 
-        }
-        if (transform.position == targetA.position)
-        {
-            switching = true;
-        }
-        else if (transform.position == targetB.position)
-        {
-            switching = false;
-        }
-    } 
+            if (!switching)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetA.position, speed); 
+            }
+            else if (switching)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetB.position, speed); 
+            }
+            if (transform.position == targetA.position)
+            {
+                switching = true;
+            }
+            else if (transform.position == targetB.position)
+            {
+                switching = false;
+            }
+        } 
+    }
 }
 

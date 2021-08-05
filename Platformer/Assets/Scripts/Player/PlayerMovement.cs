@@ -1,5 +1,5 @@
 /*
- * Script: Player Movement
+ * Script: PlayerMovement
  * Author: Felix Schneider
  * Last Change: 20.05.21
  * Not used anymore
@@ -8,39 +8,42 @@
 
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    public new Rigidbody2D rigidbody;
-    public new Transform transform;
-    public float force;
-
-    private void Awake()
+    public class PlayerMovement : MonoBehaviour
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        transform = GetComponent<Transform>();
-    }
+        public new Rigidbody2D rigidbody;
+        public new Transform transform;
+        public float force;
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.W))
+        private void Awake()
         {
-            rigidbody.AddForce(transform.up * force);
+            rigidbody = GetComponent<Rigidbody2D>();
+            transform = GetComponent<Transform>();
         }
 
-        if (Input.GetKey(KeyCode.S))
+        // Update is called once per frame
+        private void FixedUpdate()
         {
-            rigidbody.AddForce(transform.up * -force);
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                rigidbody.AddForce(transform.up * force);
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rigidbody.AddForce(transform.right * -force);
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rigidbody.AddForce(transform.up * -force);
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            rigidbody.AddForce(transform.right * force);
+            if (Input.GetKey(KeyCode.A))
+            {
+                rigidbody.AddForce(transform.right * -force);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                rigidbody.AddForce(transform.right * force);
+            }
         }
     }
 }

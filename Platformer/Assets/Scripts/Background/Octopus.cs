@@ -6,31 +6,34 @@
  */
 
 
+using Global;
+using Player;
 using UnityEngine;
 
-public class Octopus : MonoBehaviour
+namespace Background
 {
-    [SerializeField] private GameObject octopus;
-    private GameObject octopus_instance;
-
-    private Vector3 pos;
-
-    private void Awake()
+    public class Octopus : MonoBehaviour
     {
-        pos = new Vector3(PlayerSpawn.edge_death, GameController.GetStartPos().y, GameController.GetStartPos().z);       /* position dependent on StartPos and Deathwall */
-    }
+        [SerializeField] private GameObject octopus;
+        private GameObject octopus_instance;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        octopus_instance = Instantiate(octopus, pos, Quaternion.identity,transform);    /* creates the object everytime the script is executed */
-    }
+        private Vector3 pos;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        octopus_instance.transform.position = new Vector3(PlayerSpawn.edge_death, PlayerSpawn.Lerp(octopus_instance.transform.position.y ,PlayerController.GetPlayerPos().y), 0);
-    }
+        private void Awake()
+        {
+            pos = new Vector3(PlayerSpawn.edge_death, GameController.GetStartPos().y, GameController.GetStartPos().z);       /* position dependent on StartPos and Deathwall */
+        }
 
-    
+        // Start is called before the first frame update
+        private void Start()
+        {
+            octopus_instance = Instantiate(octopus, pos, Quaternion.identity,transform);    /* creates the object everytime the script is executed */
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            octopus_instance.transform.position = new Vector3(PlayerSpawn.edge_death, PlayerSpawn.Lerp(octopus_instance.transform.position.y ,PlayerController.GetPlayerPos().y), 0);
+        }
+    }
 }
