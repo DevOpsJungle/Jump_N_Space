@@ -1,5 +1,5 @@
 /*
- * Script: Entity Movement
+ * Script: EntityMovement
  * Author: Vincent Becker
  * Source: https://github.com/Brackeys/2D-Character-Controller
  * Last Change: 01.06.21

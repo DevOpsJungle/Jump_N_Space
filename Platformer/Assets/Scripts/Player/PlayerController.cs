@@ -1,5 +1,5 @@
 /*
- * Script: Player Controller
+ * Script: PlayerController
  * Author: Vincent Becker
  * Last Change: 26.07.21
  * Extension of EntityMovement, Control of player movement
