@@ -8,41 +8,44 @@
 
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    public EntityMovement controller;
-    
-    private static Vector3 pos;
-    public float runspeed = 40f;
-    private float horizontalmove = 0f;
-    private bool jump = false;
-
-    private void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        controller = GetComponent<EntityMovement>();
-        pos = GetComponent<Transform>().position;
-    }
+        public EntityMovement controller;
     
-    private void Update()
-    {
-        controller.Move(horizontalmove * Time.fixedDeltaTime, jump); 
-        jump = false;
+        private static Vector3 pos;
+        public float runspeed = 40f;
+        private float horizontalmove = 0f;
+        private bool jump = false;
 
-        horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;
-
-        if (Input.GetButtonDown("Jump"))
+        private void Awake()
         {
-            jump = true;
+            controller = GetComponent<EntityMovement>();
+            pos = GetComponent<Transform>().position;
         }
-    }
+    
+        private void Update()
+        {
+            controller.Move(horizontalmove * Time.fixedDeltaTime, jump); 
+            jump = false;
 
-    private void FixedUpdate()
-    {
-        pos = GetComponent<Transform>().position;
-    }
+            horizontalmove = Input.GetAxisRaw("Horizontal") * runspeed;
 
-    public static Vector3 GetPlayerPos()
-    {
-        return pos;
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            pos = GetComponent<Transform>().position;
+        }
+
+        public static Vector3 GetPlayerPos()
+        {
+            return pos;
+        }
     }
 }

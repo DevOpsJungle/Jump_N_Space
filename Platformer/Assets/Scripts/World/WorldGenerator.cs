@@ -7,6 +7,8 @@
 
 
 using System.Collections.Generic;
+using Player;
+using Viewport;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
