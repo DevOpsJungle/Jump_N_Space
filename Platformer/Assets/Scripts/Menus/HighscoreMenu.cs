@@ -1,3 +1,10 @@
+/*
+* Script: HighscoreMenu
+* Author: Philipp Scheffler
+* Last Change: 03.08.21
+* Read highscore file and display top ten scoreboard
+*/
+
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -11,12 +18,12 @@ namespace Menus
         [SerializeField] private GameObject error;
         [SerializeField] private TextMeshProUGUI errorText;
 
-        private static string[,] highscoreList = new string[2,10];
+        private static string[,] highscoreList = new string[2,10]; //array, where highscore names and values are saved
     
         private string[] currentSplitLine;
         private int empty = 0;
     
-        public static char split = '';
+        public static char split = ''; //cryptic seperator to prevent accidental split
         public static string path;
 
         private StreamReader reader;
@@ -27,23 +34,19 @@ namespace Menus
     
         private void Awake()
         {
-            path = @"highscore.txt";
+            path = @"highscore.txt"; //set path of highscore file
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            if (!File.Exists(path))
+            if (!File.Exists(path)) //check if highscore file already exists
             {
-                using (var init = File.CreateText(path))
+                using (var init = File.CreateText(path)) //create it at specified path
                 {
-                    for (var i = 0; i < 10; i++)
-                    {
-                        init.WriteLine("Init"+split+"0");
-                    }
+                    for (var i = 0; i < 10; i++) init.WriteLine("Init"+split+"0"); //fill it with initial values
+                    init.Close();
                 }
-
-                Debug.Log("dataPath : " + path);
             }
         
             try
@@ -52,6 +55,7 @@ namespace Menus
             }
             catch
             {
+                //catch error if file is not readable and display it
                 fail = 1;
                 errorText.text = "No highscore file accessible!";
                 error.SetActive(true);
@@ -59,21 +63,22 @@ namespace Menus
 
         
         
-            if (fail != 1)
+            if (fail != 1) //if file was not readable before, skip reading
             {
-                for (var i = 0; i < 10; i++)
+                for (var i = 0; i < 10; i++) //highscore board from 1-10
                 {
                     var currentLine = reader.ReadLine();
 
                     if (currentLine != null)
                     {
-                        currentSplitLine = currentLine.Split(split);
+                        currentSplitLine = currentLine.Split(split); //split the line into name and matching highscore
                         try
                         {
-                            for (var j = 0; j < 2; j++) HighscoreList(j, i, currentSplitLine[j]);
+                            for (var j = 0; j < 2; j++) HighscoreList(j, i, currentSplitLine[j]); //try writing the contents of the file to the function HighscoreMenu.HighscoreList / array highscoreList
                         }
                         catch
                         {
+                            //if the file is corrupt
                             errorText.text = "Highscore file corrupt!";
                             error.SetActive(true);
                             fail = 1;
@@ -86,13 +91,13 @@ namespace Menus
             
                 for (int i = 0; i < 10; i++)
                 {
-                    if (HighscoreList(0, i) != "Init")
+                    if (HighscoreList(0, i) != "Init") //check for initial values
                     {
-                        textList[i].text = (i+1)+".  "+HighscoreList(0, i) + "    " + HighscoreList(1, i);
+                        textList[i].text = (i+1)+".  "+HighscoreList(0, i) + "    " + HighscoreList(1, i); //display highscores
                     }
                     else
                     {
-                        empty++;
+                        empty++; //variable to check if whole table is empty / initial
                     }
                 }
 
@@ -105,11 +110,11 @@ namespace Menus
         }
     
 
-        public static string HighscoreList(int x, int y)
+        public static string HighscoreList(int x, int y) //function to return array values
         {
             return highscoreList[x,y];
         } 
-        public static void HighscoreList(int x, int y, string b)
+        public static void HighscoreList(int x, int y, string b) //function to save array values
         {
             highscoreList[x, y] = b;
         } 
